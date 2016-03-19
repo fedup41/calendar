@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.obdobion</groupId>
   <artifactId>calendar</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
   <name>calendar</name>
   <description>A better calendar for JAVA</description>
 
