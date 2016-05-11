@@ -20,20 +20,20 @@ import java.util.Date;
  * The following parameters are applied in order to that date. Each one has this
  * structure. No spaces are allowed within a parameter.
  * <ol>
- * <li>+ or - or @: the direction of effect on the date (@ means absolute or at)
+ * <li>+ or - or =: the direction of effect on the date (= means absolute or at)
  * <li>>or < or >= or <=: next, prev, next or this, prev or this.
  * <li>### : the quantity of the effect; E and B can be used in conjunction with
  * the direction
  * <li>unit : the unit of the effect (case is not important)
  * <ul>
- * <li>(T)ime (@BTime and @ETime are valid giving 0:0:0.0 and 23:59:59.999
+ * <li>(T)ime (=BTime and =ETime are valid giving 0:0:0.0 and 23:59:59.999
  * respectively)
  * <li>(Y)ear
  * <li>(M)onth
  * <li>(W)eekOfYear (B and E work on the current week)
  * <li>Week(O)fMonth (B and E work on the current week)
  * <li>(D)ay
- * <li>D(a)yOfWeek (B and E work on the current week, @ is current week, - is
+ * <li>D(a)yOfWeek (B and E work on the current week, = is current week, - is
  * previous week, and + is next week. Sunday is the first day of the week.)
  * <li>(H)our
  * <li>M(i)nute
@@ -43,39 +43,34 @@ import java.util.Date;
  * </ol>
  * <h4>examples</h4>
  * <h5>The beginning of today</h5>
- * _dateTime(now @bday) <br>
+ * _dateTime(now =bday) <br>
  * <h5>The beginning of yesterday</h5>
- * _dateTime(now -1day @bday) <br>
+ * _dateTime(now -1day =bday) <br>
  * <h5>The end of yesterday</h5>
- * _dateTime(now -1day @eday) <br>
+ * _dateTime(now -1day =eday) <br>
  * <h5>Monday of this week</h5>
- * _dateTime(now @2dayOfWeek) <br>
+ * _dateTime(now =2dayOfWeek) <br>
  * <h5>Monday of the week that contained 2010/04/09</h5>
- * _dateTime(2010/04/09 @2dayOfWeek) <br>
+ * _dateTime(2010/04/09 =2dayOfWeek) <br>
  * <h5>Same day and time last week</h5>
  * _dateTime(now -1week) <br>
  * <h5>Same day last week but at the end of that day.</h5>
- * _dateTime(now -1week @eday) <br>
+ * _dateTime(now -1week =eday) <br>
  * <h5>The first day of this month</h5>
- * _dateTime(now @1d) <br>
+ * _dateTime(now =1d) <br>
  * <h5>The last day of last month</h5>
- * _dateTime(now -1month @emonth) <br>
+ * _dateTime(now -1month =emonth) <br>
  * This could be done in different ways (like all of the others too), <br>
- * _dateTime(now @1d -1d @ed) <br>
- * 
+ * _dateTime(now =1d -1d =ed) <br>
+ *
  * @author Chris DeGreef
- * 
+ *
  */
 public class CalendarFactory
 {
     static private ICalendarFactory instance;
     static boolean                  inDebug           = false;
     static final SimpleDateFormat   jsonDateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
-
-    static public String asJSON (final Calendar calendar)
-    {
-        return jsonDateFormatter.format(calendar.getTime());
-    }
 
     static public String asFormula (final Calendar calendar)
     {
@@ -87,6 +82,11 @@ public class CalendarFactory
         final Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         return asFormula(cal);
+    }
+
+    static public String asJSON (final Calendar calendar)
+    {
+        return jsonDateFormatter.format(calendar.getTime());
     }
 
     static public Calendar at (final long milliseconds)
@@ -110,7 +110,7 @@ public class CalendarFactory
      * The adjustments are separated by a space. Multiple elements are
      * acceptable and are assumed to be more adjusts. This just provides
      * flexibility in how this method can be called.
-     * 
+     *
      * @param startingDate
      * @param adjustments
      * @return
@@ -131,28 +131,7 @@ public class CalendarFactory
      * The adjustments are separated by a space. Multiple elements are
      * acceptable and are assumed to be more adjusts. This just provides
      * flexibility in how this method can be called.
-     * 
-     * @param startingDate
-     * @param adjustments
-     * @return
-     */
-    static public Calendar modifyJSON (final String startingJSONDate, final String... adjustmentsArray)
-    {
-        try
-        {
-            return getInstance().modifyImpl(jsonDateFormatter.parse(startingJSONDate), adjustmentsArray);
-        } catch (final ParseException e)
-        {
-            e.printStackTrace();
-            return Calendar.getInstance();
-        }
-    }
-
-    /**
-     * The adjustments are separated by a space. Multiple elements are
-     * acceptable and are assumed to be more adjusts. This just provides
-     * flexibility in how this method can be called.
-     * 
+     *
      * @param startingDate
      * @param adjustments
      * @return
@@ -181,6 +160,27 @@ public class CalendarFactory
         }
     }
 
+    /**
+     * The adjustments are separated by a space. Multiple elements are
+     * acceptable and are assumed to be more adjusts. This just provides
+     * flexibility in how this method can be called.
+     *
+     * @param startingDate
+     * @param adjustments
+     * @return
+     */
+    static public Calendar modifyJSON (final String startingJSONDate, final String... adjustmentsArray)
+    {
+        try
+        {
+            return getInstance().modifyImpl(jsonDateFormatter.parse(startingJSONDate), adjustmentsArray);
+        } catch (final ParseException e)
+        {
+            e.printStackTrace();
+            return Calendar.getInstance();
+        }
+    }
+
     static public Calendar noTime (final Calendar startingDate)
     {
         return getInstance().noTimeImpl(startingDate);
@@ -196,7 +196,7 @@ public class CalendarFactory
      * acceptable and are assumed to be more adjusts. This just provides
      * flexibility in how this method can be called. The computation starts at
      * the exact millisecond this method is called
-     * 
+     *
      * @param startingDate
      * @param adjustments
      * @return
@@ -240,7 +240,7 @@ public class CalendarFactory
      * acceptable and are assumed to be more adjusts. This just provides
      * flexibility in how this method can be called. The computation starts at
      * the beginning of the current date.
-     * 
+     *
      * @param startingDate
      * @param adjustments
      * @return
