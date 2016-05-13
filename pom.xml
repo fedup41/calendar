@@ -5,6 +5,11 @@
   <version>1.0.0</version>
   <name>calendar</name>
   <description>A better calendar for JAVA</description>
+    <url>https://github.com/fedup41/calendar</url>
+    <organization>
+        <name>Obdobion</name>
+        <url>https://github.com/fedup41</url>
+    </organization>
 
     <properties>
         <java.target.version>1.7</java.target.version>
