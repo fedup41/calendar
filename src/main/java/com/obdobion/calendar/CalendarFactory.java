@@ -11,7 +11,6 @@ import java.util.Date;
  * <p>
  * The first token can be a special date function that is relative to the
  * current date.
- * <p>
  * <ul>
  * <li>Today or Now
  * <li>specific date in a format that is supported by the Date argument.
@@ -21,7 +20,7 @@ import java.util.Date;
  * structure. No spaces are allowed within a parameter.
  * <ol>
  * <li>+ or - or =: the direction of effect on the date (= means absolute or at)
- * <li>>or < or >= or <=: next, prev, next or this, prev or this.
+ * <li>&gt; or &lt; or &gt;= or &lt;=: next, prev, next or this, prev or this.
  * <li>### : the quantity of the effect; E and B can be used in conjunction with
  * the direction
  * <li>unit : the unit of the effect (case is not important)
@@ -41,25 +40,18 @@ import java.util.Date;
  * <li>Mi(l)lisecond or ms
  * </ul>
  * </ol>
- * <h4>examples</h4>
- * <h5>The beginning of today</h5>
- * _dateTime(now =bday) <br>
- * <h5>The beginning of yesterday</h5>
- * _dateTime(now -1day =bday) <br>
- * <h5>The end of yesterday</h5>
- * _dateTime(now -1day =eday) <br>
- * <h5>Monday of this week</h5>
- * _dateTime(now =2dayOfWeek) <br>
- * <h5>Monday of the week that contained 2010/04/09</h5>
- * _dateTime(2010/04/09 =2dayOfWeek) <br>
- * <h5>Same day and time last week</h5>
- * _dateTime(now -1week) <br>
- * <h5>Same day last week but at the end of that day.</h5>
- * _dateTime(now -1week =eday) <br>
- * <h5>The first day of this month</h5>
- * _dateTime(now =1d) <br>
- * <h5>The last day of last month</h5>
- * _dateTime(now -1month =emonth) <br>
+ * <h1>examples</h1>
+ * <h2>The beginning of today</h2> _dateTime(now =bday) <br>
+ * <h2>The beginning of yesterday</h2> _dateTime(now -1day =bday) <br>
+ * <h2>The end of yesterday</h2> _dateTime(now -1day =eday) <br>
+ * <h2>Monday of this week</h2> _dateTime(now =2dayOfWeek) <br>
+ * <h2>Monday of the week that contained 2010/04/09</h2> _dateTime(2010/04/09
+ * =2dayOfWeek) <br>
+ * <h2>Same day and time last week</h2> _dateTime(now -1week) <br>
+ * <h2>Same day last week but at the end of that day.</h2> _dateTime(now -1week
+ * =eday) <br>
+ * <h2>The first day of this month</h2> _dateTime(now =1d) <br>
+ * <h2>The last day of last month</h2> _dateTime(now -1month =emonth) <br>
  * This could be done in different ways (like all of the others too), <br>
  * _dateTime(now =1d -1d =ed) <br>
  *
@@ -112,7 +104,7 @@ public class CalendarFactory
      * flexibility in how this method can be called.
      *
      * @param startingDate
-     * @param adjustments
+     * @param adjustmentsArray
      * @return
      */
     static public Calendar modify (final Calendar startingDate, final String... adjustmentsArray)
@@ -133,7 +125,7 @@ public class CalendarFactory
      * flexibility in how this method can be called.
      *
      * @param startingDate
-     * @param adjustments
+     * @param adjustmentsArray
      * @return
      */
     static public Calendar modify (final Date startingDate, final String... adjustmentsArray)
@@ -165,8 +157,8 @@ public class CalendarFactory
      * acceptable and are assumed to be more adjusts. This just provides
      * flexibility in how this method can be called.
      *
-     * @param startingDate
-     * @param adjustments
+     * @param startingJSONDate
+     * @param adjustmentsArray
      * @return
      */
     static public Calendar modifyJSON (final String startingJSONDate, final String... adjustmentsArray)
@@ -197,8 +189,7 @@ public class CalendarFactory
      * flexibility in how this method can be called. The computation starts at
      * the exact millisecond this method is called
      *
-     * @param startingDate
-     * @param adjustments
+     * @param adjustmentsArray
      * @return
      */
     static public Calendar now (final String... adjustmentsArray)
@@ -241,8 +232,7 @@ public class CalendarFactory
      * flexibility in how this method can be called. The computation starts at
      * the beginning of the current date.
      *
-     * @param startingDate
-     * @param adjustments
+     * @param adjustmentsArray
      * @return
      */
     static public Calendar today (final String... adjustmentsArray)
