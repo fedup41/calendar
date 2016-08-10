@@ -1,32 +1,50 @@
 package com.obdobion.calendar;
 
-
 import java.util.Calendar;
 
 import org.junit.Assert;
 
 /**
- * @author Chris DeGreef
- * 
+ * <p>CalendarFactoryHelper class.</p>
+ *
+ * @author Chris DeGreef fedupforone@gmail.com
+ * @since 1.0.1
  */
 public class CalendarFactoryHelper
 {
 
-    static public void startExpectedComputed (
-        final String startingDateCommand,
-        final String expectedDateCommand,
-        final String computedDateCommand)
-        throws Exception
+    /**
+     * <p>startExpectedComputed.</p>
+     *
+     * @param startingDateCommand a {@link java.lang.String} object.
+     * @param expectedDateCommand a {@link java.lang.String} object.
+     * @param computedDateCommand a {@link java.lang.String} object.
+     * @throws java.lang.Exception if any.
+     */
+    static public void startExpectedComputed(
+            final String startingDateCommand,
+            final String expectedDateCommand,
+            final String computedDateCommand)
+                    throws Exception
     {
         startExpectedComputed(startingDateCommand, expectedDateCommand, computedDateCommand, false);
     }
 
-    static public void startExpectedComputed (
-        final String startingDateCommand,
-        final String expectedDateCommand,
-        final String computedDateCommand,
-        final boolean compareMillies)
-        throws Exception
+    /**
+     * <p>startExpectedComputed.</p>
+     *
+     * @param startingDateCommand a {@link java.lang.String} object.
+     * @param expectedDateCommand a {@link java.lang.String} object.
+     * @param computedDateCommand a {@link java.lang.String} object.
+     * @param compareMillies a boolean.
+     * @throws java.lang.Exception if any.
+     */
+    static public void startExpectedComputed(
+            final String startingDateCommand,
+            final String expectedDateCommand,
+            final String computedDateCommand,
+            final boolean compareMillies)
+                    throws Exception
     {
         CalendarFactory.setBusinessDate(null);
         CalendarFactory.setBusinessDate(CalendarFactory.nowX(startingDateCommand));

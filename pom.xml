@@ -3,8 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.obdobion</groupId>
 	<artifactId>calendar</artifactId>
-	<version>1.0.0</version>
-	<name>${project.groupId}:${project.artifactId}</name>
+	<version>1.0.1</version>
+	<name>${project.groupId}.${project.artifactId}</name>
 	<description>A better calendar for JAVA</description>
 	<url>https://github.com/fedups/calendar</url>
 	<organization>
@@ -32,8 +32,8 @@
     </scm>
 
 	<properties>
-		<java.target.version>1.7</java.target.version>
-		<java.source.version>1.7</java.source.version>
+		<java.target.version>1.6</java.target.version>
+		<java.source.version>1.6</java.source.version>
 		<junit.version>4.8.1</junit.version>
 		<slf4j.version>1.7.13</slf4j.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -85,12 +85,30 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.10.4</version>
+				<configuration>
+					<defaultAuthor>Chris DeGreef fedupforone@gmail.com</defaultAuthor>
+					<fixTags>author,since,param,return,throws,link</fixTags>
+				</configuration>
 				<executions>
 					<execution>
 						<id>javadoc-jar</id>
 						<phase>verify</phase>
 						<goals>
 							<goal>jar</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>javadoc-fix-main</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>fix</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>javadoc-fix-test</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>test-fix</goal>
 						</goals>
 					</execution>
 				</executions>

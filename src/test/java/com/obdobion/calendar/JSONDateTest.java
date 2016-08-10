@@ -6,17 +6,27 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @author Chris DeGreef
- * 
+ * <p>JSONDateTest class.</p>
+ *
+ * @author Chris DeGreef fedupforone@gmail.com
+ * @since 1.0.1
  */
 public class JSONDateTest
 {
+    /**
+     * <p>Constructor for JSONDateTest.</p>
+     */
     public JSONDateTest()
     {
     }
 
+    /**
+     * <p>basicConstructor.</p>
+     *
+     * @throws java.lang.Exception if any.
+     */
     @Test
-    public void basicConstructor () throws Exception
+    public void basicConstructor() throws Exception
     {
         Calendar cal = CalendarFactory.modifyJSON("2013-03-11T01:38:18.309-0500");
         Assert.assertEquals(

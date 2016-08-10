@@ -1,12 +1,17 @@
 package com.obdobion.calendar;
 
+/**
+ *
+ * @author Chris DeGreef fedupforone@gmail.com
+ *
+ */
 enum AdjustmentDirection
 {
     ADD,
-    SUBTRACT,
     AT,
     NEXT,
-    PREV,
     NEXTORTHIS,
-    PREVORTHIS
+    PREV,
+    PREVORTHIS,
+    SUBTRACT
 }

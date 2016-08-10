@@ -1,16 +1,21 @@
 package com.obdobion.calendar;
 
+/**
+ *
+ * @author Chris DeGreef fedupforone@gmail.com
+ *
+ */
 enum UnitOfMeasure
 {
-    TIME,
-    YEAR,
-    MONTH,
-    WEEKOFYEAR,
-    WEEKOFMONTH,
     DAY,
     DAYOFWEEK,
     HOUR,
+    MILLISECOND,
     MINUTE,
+    MONTH,
     SECOND,
-    MILLISECOND
+    TIME,
+    WEEKOFMONTH,
+    WEEKOFYEAR,
+    YEAR
 }
