@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.obdobion</groupId>
 	<artifactId>calendar</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.3</version>
 	<name>${project.groupId}.${project.artifactId}</name>
 	<description>A better calendar for JAVA</description>
 	<url>https://github.com/fedups/com.obdobion.calendar</url>

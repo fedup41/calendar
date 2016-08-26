@@ -69,14 +69,16 @@ class CalendarFactoryImpl implements ICalendarFactory
     @Override
     public String asFormula(final Calendar calendar)
     {
+        final char dir = AdjustmentDirection.AT.firstChar;
+
         final StringBuilder sb = new StringBuilder();
-        sb.append("@").append(calendar.get(Calendar.YEAR)).append("year");
-        sb.append(" @").append(calendar.get(Calendar.MONTH) + 1).append("month");
-        sb.append(" @").append(calendar.get(Calendar.DAY_OF_MONTH)).append("day");
-        sb.append(" @").append(calendar.get(Calendar.HOUR_OF_DAY)).append("hour");
-        sb.append(" @").append(calendar.get(Calendar.MINUTE)).append("minute");
-        sb.append(" @").append(calendar.get(Calendar.SECOND)).append("second");
-        sb.append(" @").append(calendar.get(Calendar.MILLISECOND)).append("millisecond");
+        sb.append("" + dir).append(calendar.get(Calendar.YEAR)).append("year");
+        sb.append(" " + dir).append(calendar.get(Calendar.MONTH) + 1).append("month");
+        sb.append(" " + dir).append(calendar.get(Calendar.DAY_OF_MONTH)).append("day");
+        sb.append(" " + dir).append(calendar.get(Calendar.HOUR_OF_DAY)).append("hour");
+        sb.append(" " + dir).append(calendar.get(Calendar.MINUTE)).append("minute");
+        sb.append(" " + dir).append(calendar.get(Calendar.SECOND)).append("second");
+        sb.append(" " + dir).append(calendar.get(Calendar.MILLISECOND)).append("millisecond");
         return sb.toString();
     }
 

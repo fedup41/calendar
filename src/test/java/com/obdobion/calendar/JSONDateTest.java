@@ -6,7 +6,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * <p>JSONDateTest class.</p>
+ * <p>
+ * JSONDateTest class.
+ * </p>
  *
  * @author Chris DeGreef fedupforone@gmail.com
  * @since 1.0.1
@@ -14,23 +16,28 @@ import org.junit.Test;
 public class JSONDateTest
 {
     /**
-     * <p>Constructor for JSONDateTest.</p>
+     * <p>
+     * Constructor for JSONDateTest.
+     * </p>
      */
     public JSONDateTest()
     {
     }
 
     /**
-     * <p>basicConstructor.</p>
+     * <p>
+     * basicConstructor.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void basicConstructor() throws Exception
     {
-        Calendar cal = CalendarFactory.modifyJSON("2013-03-11T01:38:18.309-0500");
+        final Calendar cal = CalendarFactory.modify("2013-03-11T01:38:18.309-0500");
         Assert.assertEquals(
-                "@2013year @3month @11day @1hour @38minute @18second @309millisecond",
+                "=2013year =3month =11day =1hour =38minute =18second =309millisecond",
                 CalendarFactory.asFormula(cal));
         Assert.assertEquals("year", 2013, cal.get(Calendar.YEAR));
         Assert.assertEquals("month", Calendar.MARCH, cal.get(Calendar.MONTH));

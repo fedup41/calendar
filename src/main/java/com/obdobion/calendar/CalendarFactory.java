@@ -6,7 +6,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * <p>CalendarFactory class.</p>
+ * <p>
+ * CalendarFactory class.
+ * </p>
  *
  * @author Chris DeGreef fedupforone@gmail.com
  */
@@ -169,23 +171,12 @@ public class CalendarFactory
         }
     }
 
-    /**
-     * The adjustments are separated by a space. Multiple elements are
-     * acceptable and are assumed to be more adjusts. This just provides
-     * flexibility in how this method can be called.
-     *
-     * @param startingJSONDate
-     *            a {@link java.lang.String} object.
-     * @param adjustmentsArray
-     *            a {@link java.lang.String} object.
-     * @return a {@link java.util.Calendar} object.
-     */
-    static public Calendar modifyJSON(final String startingJSONDate, final String... adjustmentsArray)
+    static public Calendar modify(final String startingDate, final String... adjustmentsArray)
     {
         try
         {
-            return getInstance().modifyImpl(jsonDateFormatter.parse(startingJSONDate), adjustmentsArray);
-        } catch (final ParseException e)
+            return getInstance().modifyImpl(TemporalHelper.parseWithPredefinedParsers(startingDate), adjustmentsArray);
+        } catch (final Exception e)
         {
             e.printStackTrace();
             return Calendar.getInstance();

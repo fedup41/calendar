@@ -21,10 +21,14 @@ class DateAdjustment
     UnitOfMeasure               unitOfMeasure;
 
     /**
-     * <p>Constructor for DateAdjustment.</p>
+     * <p>
+     * Constructor for DateAdjustment.
+     * </p>
      *
-     * @param tokenValue a {@link java.lang.String} object.
-     * @throws java.text.ParseException if any.
+     * @param tokenValue
+     *            a {@link java.lang.String} object.
+     * @throws java.text.ParseException
+     *             if any.
      */
     public DateAdjustment(
             final String tokenValue)
@@ -36,10 +40,14 @@ class DateAdjustment
     }
 
     /**
-     * <p>adjust.</p>
+     * <p>
+     * adjust.
+     * </p>
      *
-     * @param cal a {@link java.util.Calendar} object.
-     * @throws java.text.ParseException if any.
+     * @param cal
+     *            a {@link java.util.Calendar} object.
+     * @throws java.text.ParseException
+     *             if any.
      */
     @SuppressWarnings("null")
     public void adjust(
@@ -642,9 +650,8 @@ class DateAdjustment
             break;
         default:
             if (direction == AdjustmentDirection.AT)
-            {
                 cal.set(Calendar.SECOND, qty);
-            } else
+            else
                 cal.add(Calendar.SECOND, qty);
         }
     }
@@ -674,10 +681,8 @@ class DateAdjustment
                         0);
             }
         else
-        {
             throw new ParseException("invalid direction in data adjustment: " + direction,
                     0);
-        }
     }
 
     void adjustToBeginningOfTime(
@@ -749,16 +754,12 @@ class DateAdjustment
                 break;
             case NEXT:
                 if (cal.get(Calendar.WEEK_OF_MONTH) == endWeekOfThisMonth(cal))
-                {
                     cal.add(Calendar.MONTH, 1);
-                }
                 cal.set(Calendar.WEEK_OF_MONTH, endWeekOfThisMonth(cal));
                 break;
             case PREVORTHIS:
                 if (cal.get(Calendar.WEEK_OF_MONTH) != endWeekOfThisMonth(cal))
-                {
                     cal.add(Calendar.MONTH, -1);
-                }
                 cal.set(Calendar.WEEK_OF_MONTH, endWeekOfThisMonth(cal));
                 break;
             case PREV:
@@ -779,30 +780,22 @@ class DateAdjustment
                 break;
             case NEXTORTHIS:
                 if (cal.get(Calendar.WEEK_OF_MONTH) > qty)
-                {
                     cal.add(Calendar.MONTH, 1);
-                }
                 cal.set(Calendar.WEEK_OF_MONTH, qty);
                 break;
             case NEXT:
                 if (cal.get(Calendar.WEEK_OF_MONTH) >= qty)
-                {
                     cal.add(Calendar.MONTH, 1);
-                }
                 cal.set(Calendar.WEEK_OF_MONTH, qty);
                 break;
             case PREVORTHIS:
                 if (cal.get(Calendar.WEEK_OF_MONTH) < qty)
-                {
                     cal.add(Calendar.MONTH, -1);
-                }
                 cal.set(Calendar.WEEK_OF_MONTH, qty);
                 break;
             case PREV:
                 if (cal.get(Calendar.WEEK_OF_MONTH) <= qty)
-                {
                     cal.add(Calendar.MONTH, -1);
-                }
                 cal.set(Calendar.WEEK_OF_MONTH, qty);
                 break;
             case SUBTRACT:
@@ -832,9 +825,7 @@ class DateAdjustment
                 break;
             case NEXTORTHIS:
                 if (cal.get(Calendar.WEEK_OF_YEAR) != 1)
-                {
                     cal.add(Calendar.YEAR, 1);
-                }
                 break;
             case NEXT:
                 cal.add(Calendar.YEAR, 1);
@@ -863,15 +854,11 @@ class DateAdjustment
                 break;
             case NEXT:
                 if (cal.get(Calendar.WEEK_OF_YEAR) == 53)
-                {
                     cal.add(Calendar.YEAR, 1);
-                }
                 break;
             case PREVORTHIS:
                 if (cal.get(Calendar.WEEK_OF_YEAR) != 53)
-                {
                     cal.add(Calendar.YEAR, -1);
-                }
                 break;
             case PREV:
                 cal.add(Calendar.YEAR, -1);
@@ -893,30 +880,22 @@ class DateAdjustment
                 break;
             case NEXTORTHIS:
                 if (cal.get(Calendar.WEEK_OF_YEAR) > qty)
-                {
                     cal.add(Calendar.YEAR, 1);
-                }
                 cal.set(Calendar.WEEK_OF_YEAR, qty);
                 break;
             case NEXT:
                 if (cal.get(Calendar.WEEK_OF_YEAR) >= qty)
-                {
                     cal.add(Calendar.YEAR, 1);
-                }
                 cal.set(Calendar.WEEK_OF_YEAR, qty);
                 break;
             case PREVORTHIS:
                 if (cal.get(Calendar.WEEK_OF_YEAR) < qty)
-                {
                     cal.add(Calendar.YEAR, -1);
-                }
                 cal.set(Calendar.WEEK_OF_YEAR, qty);
                 break;
             case PREV:
                 if (cal.get(Calendar.WEEK_OF_YEAR) <= qty)
-                {
                     cal.add(Calendar.YEAR, -1);
-                }
                 cal.set(Calendar.WEEK_OF_YEAR, qty);
                 break;
             case SUBTRACT:
@@ -945,9 +924,7 @@ class DateAdjustment
                 break;
             case NEXTORTHIS:
                 if (cal.get(Calendar.DAY_OF_YEAR) != 1)
-                {
                     cal.add(Calendar.YEAR, 1);
-                }
                 break;
             case NEXT:
                 cal.add(Calendar.YEAR, 1);
@@ -1029,7 +1006,9 @@ class DateAdjustment
     }
 
     /**
-     * <p>isInDebug.</p>
+     * <p>
+     * isInDebug.
+     * </p>
      *
      * @return a boolean.
      */
@@ -1042,54 +1021,13 @@ class DateAdjustment
             final String tokenValue)
                     throws ParseException
     {
-        int qtyStart;
-
-        switch (tokenValue.charAt(0))
-        {
-        case '+':
-            direction = AdjustmentDirection.ADD;
-            qtyStart = 1;
-            break;
-        case '-':
-            direction = AdjustmentDirection.SUBTRACT;
-            qtyStart = 1;
-            break;
-        case '=':
-            direction = AdjustmentDirection.AT;
-            qtyStart = 1;
-            break;
-        case '>':
-            if (tokenValue.charAt(1) == '=')
-            {
-                direction = AdjustmentDirection.NEXTORTHIS;
-                qtyStart = 2;
-            } else
-            {
-                direction = AdjustmentDirection.NEXT;
-                qtyStart = 1;
-            }
-            break;
-        case '<':
-            if (tokenValue.charAt(1) == '=')
-            {
-                direction = AdjustmentDirection.PREVORTHIS;
-                qtyStart = 2;
-            } else
-            {
-                direction = AdjustmentDirection.PREV;
-                qtyStart = 1;
-            }
-            break;
-        default:
-            throw new ParseException("invalid direction: " + tokenValue,
-                    0);
-        }
-        return qtyStart;
+        direction = AdjustmentDirection.find(tokenValue);
+        return direction.size();
     }
 
     int parseEndOfNumber(
             final String tokenValue,
-            int startOfNumber)
+            final int startOfNumber)
     {
         for (int son = startOfNumber; son < tokenValue.length(); son++)
         {
