@@ -2,6 +2,9 @@ package com.obdobion.calendar;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -18,6 +21,25 @@ public class CalendarFactory
     static private ICalendarFactory instance;
     static final SimpleDateFormat   jsonDateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 
+    static public Calendar asCalendar(final LocalDateTime ldt)
+    {
+        final Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date(asDateLong(ldt)));
+        return cal;
+    }
+
+    static public Date asDate(final LocalDateTime ldt)
+    {
+        return new Date(asDateLong(ldt));
+    }
+
+    static public long asDateLong(final LocalDateTime ldt)
+    {
+        final long seconds = ldt.atZone(ZoneId.systemDefault()).toEpochSecond();
+        final long totalMillisSinceEpoch = (seconds * 1000) + ldt.getNano() / 1000000;
+        return totalMillisSinceEpoch;
+    }
+
     /**
      * <p>
      * asFormula.
@@ -29,7 +51,8 @@ public class CalendarFactory
      */
     static public String asFormula(final Calendar calendar)
     {
-        return getInstance().asFormula(calendar);
+
+        return getInstance().asFormula(convert(calendar));
     }
 
     /**
@@ -43,9 +66,22 @@ public class CalendarFactory
      */
     static public String asFormula(final Date date)
     {
-        final Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        return asFormula(cal);
+        return asFormula(convert(date));
+    }
+
+    /**
+     * <p>
+     * asFormula.
+     * </p>
+     *
+     * @param calendar
+     *            a {@link java.time.LocalDateTime} object.
+     * @return a {@link java.lang.String} object.
+     * @since 2.0.0
+     */
+    static public String asFormula(final LocalDateTime calendar)
+    {
+        return getInstance().asFormula(calendar);
     }
 
     /**
@@ -59,7 +95,22 @@ public class CalendarFactory
      */
     static public String asJSON(final Calendar calendar)
     {
-        return jsonDateFormatter.format(calendar.getTime());
+        return asJSON(convert(calendar));
+    }
+
+    /**
+     * <p>
+     * asJSON.
+     * </p>
+     *
+     * @param ldt
+     *            a {@link java.util.Calendar} object.
+     * @return a {@link java.lang.String} object.
+     * @since 2.0.0
+     */
+    static public String asJSON(final LocalDateTime ldt)
+    {
+        return jsonDateFormatter.format(new Date(asDateLong(ldt)));
     }
 
     /**
@@ -71,9 +122,58 @@ public class CalendarFactory
      *            a long.
      * @return a {@link java.util.Calendar} object.
      */
-    static public Calendar at(final long milliseconds)
+    static public LocalDateTime at(final long milliseconds)
     {
-        return getInstance().atImpl(milliseconds);
+        /*
+         * Only seconds are supported but legacy is passing millis
+         */
+        return convert(milliseconds / 1000);
+    }
+
+    /**
+     * <p>
+     * convert.
+     * </p>
+     *
+     * @param calendar
+     *            a {@link java.util.Calendar} object.
+     * @return a {@link java.time.LocalDateTime} object.
+     * @since 2.0.0
+     */
+    static public LocalDateTime convert(final Calendar calendar)
+    {
+        return calendar.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+    }
+
+    /**
+     * <p>
+     * convert.
+     * </p>
+     *
+     * @param date
+     *            a {@link java.util.Date} object.
+     * @return a {@link java.time.LocalDateTime} object.
+     * @since 2.0.0
+     */
+    static public LocalDateTime convert(final Date date)
+    {
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+    }
+
+    /**
+     * <p>
+     * convert.
+     * </p>
+     *
+     * @param epochSecond
+     *            a long.
+     * @return a {@link java.time.LocalDateTime} object.
+     * @since 2.0.0
+     */
+    static public LocalDateTime convert(final long epochSecond)
+    {
+        final Instant instant = Instant.ofEpochSecond(epochSecond);
+        return instant.atZone(ZoneId.systemDefault()).toLocalDateTime();
     }
 
     /**
@@ -113,15 +213,15 @@ public class CalendarFactory
      *            a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
      */
-    static public Calendar modify(final Calendar startingDate, final String... adjustmentsArray)
+    static public LocalDateTime modify(final Calendar startingDate, final String... adjustmentsArray)
     {
         try
         {
-            return getInstance().modifyImpl(startingDate, adjustmentsArray);
+            return getInstance().modifyImpl(convert(startingDate), adjustmentsArray);
         } catch (final ParseException e)
         {
             e.printStackTrace();
-            return Calendar.getInstance();
+            return LocalDateTime.now();
         }
     }
 
@@ -136,7 +236,30 @@ public class CalendarFactory
      *            a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
      */
-    static public Calendar modify(final Date startingDate, final String... adjustmentsArray)
+    static public LocalDateTime modify(final Date startingDate, final String... adjustmentsArray)
+    {
+        try
+        {
+            return getInstance().modifyImpl(convert(startingDate), adjustmentsArray);
+        } catch (final ParseException e)
+        {
+            e.printStackTrace();
+            return LocalDateTime.now();
+        }
+    }
+
+    /**
+     * <p>
+     * modify.
+     * </p>
+     *
+     * @param startingDate
+     *            a {@link java.time.LocalDateTime} object.
+     * @param adjustmentsArray
+     *            a {@link java.lang.String} object.
+     * @return a {@link java.time.LocalDateTime} object.
+     */
+    static public LocalDateTime modify(final LocalDateTime startingDate, final String... adjustmentsArray)
     {
         try
         {
@@ -144,7 +267,7 @@ public class CalendarFactory
         } catch (final ParseException e)
         {
             e.printStackTrace();
-            return Calendar.getInstance();
+            return LocalDateTime.now();
         }
     }
 
@@ -159,19 +282,30 @@ public class CalendarFactory
      *            a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
      */
-    static public Calendar modify(final long startingMilliseconds, final String... adjustmentsArray)
+    static public LocalDateTime modify(final long startingMilliseconds, final String... adjustmentsArray)
     {
         try
         {
-            return getInstance().modifyImpl(startingMilliseconds, adjustmentsArray);
+            return getInstance().modifyImpl(convert(startingMilliseconds), adjustmentsArray);
         } catch (final ParseException e)
         {
             e.printStackTrace();
-            return Calendar.getInstance();
+            return LocalDateTime.now();
         }
     }
 
-    static public Calendar modify(final String startingDate, final String... adjustmentsArray)
+    /**
+     * <p>
+     * modify.
+     * </p>
+     *
+     * @param startingDate
+     *            a {@link java.lang.String} object.
+     * @param adjustmentsArray
+     *            a {@link java.lang.String} object.
+     * @return a {@link java.time.LocalDateTime} object.
+     */
+    static public LocalDateTime modify(final String startingDate, final String... adjustmentsArray)
     {
         try
         {
@@ -179,7 +313,7 @@ public class CalendarFactory
         } catch (final Exception e)
         {
             e.printStackTrace();
-            return Calendar.getInstance();
+            return LocalDateTime.now();
         }
     }
 
@@ -192,9 +326,9 @@ public class CalendarFactory
      *            a {@link java.util.Calendar} object.
      * @return a {@link java.util.Calendar} object.
      */
-    static public Calendar noTime(final Calendar startingDate)
+    static public LocalDateTime noTime(final Calendar startingDate)
     {
-        return getInstance().noTimeImpl(startingDate);
+        return getInstance().noTimeImpl(convert(startingDate));
     }
 
     /**
@@ -206,7 +340,21 @@ public class CalendarFactory
      *            a {@link java.util.Date} object.
      * @return a {@link java.util.Date} object.
      */
-    static public Date noTime(final Date startingDate)
+    static public LocalDateTime noTime(final Date startingDate)
+    {
+        return getInstance().noTimeImpl(convert(startingDate));
+    }
+
+    /**
+     * <p>
+     * noTime.
+     * </p>
+     *
+     * @param startingDate
+     *            a {@link java.util.Date} object.
+     * @return a {@link java.util.Date} object.
+     */
+    static public LocalDateTime noTime(final LocalDateTime startingDate)
     {
         return getInstance().noTimeImpl(startingDate);
     }
@@ -221,7 +369,7 @@ public class CalendarFactory
      *            a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
      */
-    static public Calendar now(final String... adjustmentsArray)
+    static public LocalDateTime now(final String... adjustmentsArray)
     {
         try
         {
@@ -229,7 +377,7 @@ public class CalendarFactory
         } catch (final ParseException e)
         {
             e.printStackTrace();
-            return Calendar.getInstance();
+            return LocalDateTime.now();
         }
     }
 
@@ -244,7 +392,7 @@ public class CalendarFactory
      * @throws java.text.ParseException
      *             if any.
      */
-    static public Calendar nowX(final String... adjustmentsArray) throws ParseException
+    static public LocalDateTime nowX(final String... adjustmentsArray) throws ParseException
     {
         return getInstance().nowImpl(adjustmentsArray);
     }
@@ -273,9 +421,9 @@ public class CalendarFactory
      * @param businessDate
      *            a {@link java.util.Calendar} object.
      */
-    static public void setBusinessDate(final Calendar businessDate)
+    static public void setBusinessDate(final LocalDateTime businessDate)
     {
-        getInstance().setBusinessDateImpl(businessDate);
+        getInstance().setOverrideForSystemTime(businessDate);
     }
 
     /**
@@ -301,7 +449,7 @@ public class CalendarFactory
      *            a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
      */
-    static public Calendar today(final String... adjustmentsArray)
+    static public LocalDateTime today(final String... adjustmentsArray)
     {
         try
         {
@@ -309,7 +457,7 @@ public class CalendarFactory
         } catch (final ParseException e)
         {
             e.printStackTrace();
-            return Calendar.getInstance();
+            return LocalDateTime.now();
         }
     }
 

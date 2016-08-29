@@ -6,7 +6,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * <p>DateMinuteTest class.</p>
+ * <p>
+ * DateMinuteTest class.
+ * </p>
  *
  * @author Chris DeGreef fedupforone@gmail.com
  * @since 1.0.1
@@ -14,7 +16,11 @@ import org.junit.Test;
 public class DateMinuteTest
 {
     /**
-     * <p>Constructor for DateMinuteTest.</p>
+     * <p>
+     * Constructor for DateMinuteTest.
+     * </p>
+     *
+     * @since 2.0.0
      */
     public DateMinuteTest()
     {
@@ -22,9 +28,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>add_invalidBeginning.</p>
+     * <p>
+     * add_invalidBeginning.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void add_invalidBeginning()
@@ -41,9 +51,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>add_minute.</p>
+     * <p>
+     * add_minute.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void add_minute()
@@ -53,9 +67,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>atBeforeCurrentTimeResultsInPastTime.</p>
+     * <p>
+     * atBeforeCurrentTimeResultsInPastTime.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void atBeforeCurrentTimeResultsInPastTime()
@@ -65,9 +83,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>atEndWhenAtEnd.</p>
+     * <p>
+     * atEndWhenAtEnd.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void atEndWhenAtEnd()
@@ -77,9 +99,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>atEndWhenNotAtEnd.</p>
+     * <p>
+     * atEndWhenNotAtEnd.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void atEndWhenNotAtEnd()
@@ -89,9 +115,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>beginningAt.</p>
+     * <p>
+     * beginningAt.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void beginningAt()
@@ -103,9 +133,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>beginningNext.</p>
+     * <p>
+     * beginningNext.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void beginningNext()
@@ -115,9 +149,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>beginningNextOrThis_beginning.</p>
+     * <p>
+     * beginningNextOrThis_beginning.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void beginningNextOrThis_beginning()
@@ -127,9 +165,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>beginningNextOrThis_notBeginning.</p>
+     * <p>
+     * beginningNextOrThis_notBeginning.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void beginningNextOrThis_notBeginning()
@@ -140,9 +182,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>beginningPrev_after.</p>
+     * <p>
+     * beginningPrev_after.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void beginningPrev_after()
@@ -152,9 +198,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>beginningPrev_beginning.</p>
+     * <p>
+     * beginningPrev_beginning.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void beginningPrev_beginning()
@@ -164,9 +214,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>beginningPrevOrThis_after.</p>
+     * <p>
+     * beginningPrevOrThis_after.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void beginningPrevOrThis_after()
@@ -176,9 +230,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>beginningPrevOrThis_beginning.</p>
+     * <p>
+     * beginningPrevOrThis_beginning.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void beginningPrevOrThis_beginning()
@@ -188,9 +246,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>endingNext_ending.</p>
+     * <p>
+     * endingNext_ending.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void endingNext_ending()
@@ -200,9 +262,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>endingNext_notEnding.</p>
+     * <p>
+     * endingNext_notEnding.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void endingNext_notEnding()
@@ -212,9 +278,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>endingNextOrThis_ending.</p>
+     * <p>
+     * endingNextOrThis_ending.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void endingNextOrThis_ending()
@@ -224,21 +294,29 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>endingNextOrThis_notEnding.</p>
+     * <p>
+     * endingNextOrThis_notEnding.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void endingNextOrThis_notEnding()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=et =1hours =10min =998mil", "=et =1hours =9min", "<=emin");
+        CalendarFactoryHelper.startExpectedComputed("=et =1hours =10min =1sec", "=et =1hours =9min", "<=emin");
     }
 
     /**
-     * <p>endingPrev_ending.</p>
+     * <p>
+     * endingPrev_ending.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void endingPrev_ending()
@@ -248,9 +326,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>endingPrev_notEnding.</p>
+     * <p>
+     * endingPrev_notEnding.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void endingPrev_notEnding()
@@ -260,9 +342,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>endingPrevOrThis_ending.</p>
+     * <p>
+     * endingPrevOrThis_ending.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void endingPrevOrThis_ending()
@@ -272,21 +358,29 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>endingPrevOrThis_notEnding.</p>
+     * <p>
+     * endingPrevOrThis_notEnding.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void endingPrevOrThis_notEnding()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=et =1hours =10min =998mil", "=et =1hours =9min", "<=emin");
+        CalendarFactoryHelper.startExpectedComputed("=et =1hours =10min =1sec", "=et =1hours =9min", "<=emin");
     }
 
     /**
-     * <p>greaterBeforeCurrentTimeResultsInFutureTime.</p>
+     * <p>
+     * greaterBeforeCurrentTimeResultsInFutureTime.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void greaterBeforeCurrentTimeResultsInFutureTime()
@@ -296,9 +390,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>nextOrThisMinute_after.</p>
+     * <p>
+     * nextOrThisMinute_after.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void nextOrThisMinute_after()
@@ -308,9 +406,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>nextOrThisMinute_before.</p>
+     * <p>
+     * nextOrThisMinute_before.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void nextOrThisMinute_before()
@@ -320,9 +422,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>nextOrThisMinute_same.</p>
+     * <p>
+     * nextOrThisMinute_same.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void nextOrThisMinute_same()
@@ -332,9 +438,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>prev_after.</p>
+     * <p>
+     * prev_after.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void prev_after()
@@ -344,9 +454,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>prev_before.</p>
+     * <p>
+     * prev_before.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void prev_before()
@@ -356,9 +470,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>prev_same.</p>
+     * <p>
+     * prev_same.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void prev_same()
@@ -368,9 +486,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>prevOrThis_after.</p>
+     * <p>
+     * prevOrThis_after.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void prevOrThis_after()
@@ -380,9 +502,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>prevOrThis_before.</p>
+     * <p>
+     * prevOrThis_before.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void prevOrThis_before()
@@ -392,9 +518,13 @@ public class DateMinuteTest
     }
 
     /**
-     * <p>prevOrThis_same.</p>
+     * <p>
+     * prevOrThis_same.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
+     * @since 2.0.0
      */
     @Test
     public void prevOrThis_same()

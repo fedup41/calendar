@@ -4,7 +4,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * <p>DateDayOfWeekTest class.</p>
+ * <p>
+ * DateDayOfWeekTest class.
+ * </p>
  *
  * @author Chris DeGreef fedupforone@gmail.com
  * @since 1.0.1
@@ -12,7 +14,9 @@ import org.junit.Test;
 public class DateDayOfWeekTest
 {
     /**
-     * <p>Constructor for DateDayOfWeekTest.</p>
+     * <p>
+     * Constructor for DateDayOfWeekTest.
+     * </p>
      */
     public DateDayOfWeekTest()
     {
@@ -20,9 +24,12 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>at_BOW.</p>
+     * <p>
+     * at_BOW.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void at_BOW()
@@ -32,45 +39,57 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>at_EOW.</p>
+     * <p>
+     * at_EOW.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void at_EOW()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=7dayofweek =20ms", "-6d =20ms", "=edayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=1dayofweek =20ms", "+6d =20ms", "=edayofweek");
     }
 
     /**
-     * <p>next_BOW_NextDayInNextWeek.</p>
+     * <p>
+     * next_BOW_NextDayInNextWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void next_BOW_NextDayInNextWeek()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=6dayofweek =btime", "+1w =1dayofweek", ">bdayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=6dayofweek =btime", "+7d =1dayofweek", ">bdayofweek");
     }
 
     /**
-     * <p>next_DAY_NextDayInNextWeek.</p>
+     * <p>
+     * next_DAY_NextDayInNextWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void next_DAY_NextDayInNextWeek()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=6dayofweek =btime", "+1w", ">6dayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=6dayofweek =btime", "+7d", ">6dayofweek");
     }
 
     /**
-     * <p>next_DAY_NextDayInSameWeek.</p>
+     * <p>
+     * next_DAY_NextDayInSameWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void next_DAY_NextDayInSameWeek()
@@ -80,33 +99,42 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>next_EOW_NextDayInNextWeek.</p>
+     * <p>
+     * next_EOW_NextDayInNextWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void next_EOW_NextDayInNextWeek()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=7dayofweek", "+1w =7dayofweek =etime", ">edayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=7dayofweek", "+7d =7dayofweek =etime", ">edayofweek");
     }
 
     /**
-     * <p>nextEq_BOW_NextDayInNextWeek.</p>
+     * <p>
+     * nextEq_BOW_NextDayInNextWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void nextEq_BOW_NextDayInNextWeek()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=2dayofweek =btime", "+1w =1dayofweek", ">=bdayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=2dayofweek =btime", "+7d =1dayofweek", ">=bdayofweek");
     }
 
     /**
-     * <p>nextEq_BOW_NextDayInSameWeek.</p>
+     * <p>
+     * nextEq_BOW_NextDayInSameWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void nextEq_BOW_NextDayInSameWeek()
@@ -116,21 +144,27 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>nextEq_DAY_NextDayInNextWeek.</p>
+     * <p>
+     * nextEq_DAY_NextDayInNextWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void nextEq_DAY_NextDayInNextWeek()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=5dayofweek =btime", "+1w -1d", ">=4dayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=5dayofweek =btime", "+7d -1d", ">=4dayofweek");
     }
 
     /**
-     * <p>nextEq_DAY_NextDayInSameWeek.</p>
+     * <p>
+     * nextEq_DAY_NextDayInSameWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void nextEq_DAY_NextDayInSameWeek()
@@ -140,9 +174,12 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>nextEq_DAY_ThisDayIsOk.</p>
+     * <p>
+     * nextEq_DAY_ThisDayIsOk.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void nextEq_DAY_ThisDayIsOk()
@@ -152,21 +189,30 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>nextEq_EOW_NextDayInSameWeek.</p>
+     * <p>
+     * nextEq_EOW_NextDayInSameWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void nextEq_EOW_NextDayInSameWeek()
             throws Exception
     {
+        /*
+         * Wed=3, SUN=7
+         */
         CalendarFactoryHelper.startExpectedComputed("=3dayofweek ", "=7dayofweek =etime", ">=edayofweek");
     }
 
     /**
-     * <p>nextEq_EOW_NextDayIsOK.</p>
+     * <p>
+     * nextEq_EOW_NextDayIsOK.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void nextEq_EOW_NextDayIsOK()
@@ -176,9 +222,12 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>plus_BOW_error.</p>
+     * <p>
+     * plus_BOW_error.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void plus_BOW_error()
@@ -196,9 +245,12 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>plus_DayOfWeek.</p>
+     * <p>
+     * plus_DayOfWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void plus_DayOfWeek()
@@ -214,9 +266,12 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>plus_EOW_error.</p>
+     * <p>
+     * plus_EOW_error.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void plus_EOW_error()
@@ -234,21 +289,27 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>prev_BOW_PrevDayInPrevWeek.</p>
+     * <p>
+     * prev_BOW_PrevDayInPrevWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prev_BOW_PrevDayInPrevWeek()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=1dayofweek =btime", "-1w", "<bdayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=1dayofweek =btime", "-7d", "<bdayofweek");
     }
 
     /**
-     * <p>prev_BOW_PrevDayInSameWeek.</p>
+     * <p>
+     * prev_BOW_PrevDayInSameWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prev_BOW_PrevDayInSameWeek()
@@ -258,21 +319,27 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>prev_DAY_PrevDayInPrevWeek.</p>
+     * <p>
+     * prev_DAY_PrevDayInPrevWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prev_DAY_PrevDayInPrevWeek()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=6dayofweek =btime", "-1w", "<6dayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=6dayofweek =btime", "-7d", "<6dayofweek");
     }
 
     /**
-     * <p>prev_DAY_PrevDayInSameWeek.</p>
+     * <p>
+     * prev_DAY_PrevDayInSameWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prev_DAY_PrevDayInSameWeek()
@@ -282,21 +349,27 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>prev_EOW_PrevDayInPrevWeek.</p>
+     * <p>
+     * prev_EOW_PrevDayInPrevWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prev_EOW_PrevDayInPrevWeek()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=7dayofweek", "-1w =etime", "<edayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=7dayofweek", "-7d =etime", "<edayofweek");
     }
 
     /**
-     * <p>prevEq_BOW_PrevDayInSameWeek.</p>
+     * <p>
+     * prevEq_BOW_PrevDayInSameWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prevEq_BOW_PrevDayInSameWeek()
@@ -306,9 +379,12 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>prevEq_BOW_ThisDayIsOk.</p>
+     * <p>
+     * prevEq_BOW_ThisDayIsOk.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prevEq_BOW_ThisDayIsOk()
@@ -318,21 +394,27 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>prevEq_DAY_PrevDayInPrevWeek.</p>
+     * <p>
+     * prevEq_DAY_PrevDayInPrevWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prevEq_DAY_PrevDayInPrevWeek()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=4dayofweek =btime", "-1w +1d", "<=5dayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=4dayofweek =btime", "-7d +1d", "<=5dayofweek");
     }
 
     /**
-     * <p>prevEq_DAY_PrevDayInSameWeek.</p>
+     * <p>
+     * prevEq_DAY_PrevDayInSameWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prevEq_DAY_PrevDayInSameWeek()
@@ -342,9 +424,12 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>prevEq_DAY_ThisDayIsOk.</p>
+     * <p>
+     * prevEq_DAY_ThisDayIsOk.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prevEq_DAY_ThisDayIsOk()
@@ -354,9 +439,12 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>prevEq_EOW_PrevDayInSameWeek.</p>
+     * <p>
+     * prevEq_EOW_PrevDayInSameWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prevEq_EOW_PrevDayInSameWeek()
@@ -366,9 +454,12 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>prevEq_EOW_ThisDayIsOk.</p>
+     * <p>
+     * prevEq_EOW_ThisDayIsOk.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prevEq_EOW_ThisDayIsOk()
@@ -378,9 +469,12 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>subtract_BOW_error.</p>
+     * <p>
+     * subtract_BOW_error.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void subtract_BOW_error()
@@ -398,9 +492,12 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>subtract_DayOfWeek.</p>
+     * <p>
+     * subtract_DayOfWeek.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void subtract_DayOfWeek()
@@ -408,7 +505,7 @@ public class DateDayOfWeekTest
     {
         try
         {
-            CalendarFactoryHelper.startExpectedComputed("=btime", "-1w =1dayofweek", "-1dayofweek");
+            CalendarFactoryHelper.startExpectedComputed("=btime", "-7d =1dayofweek", "-1dayofweek");
         } catch (final Exception e)
         {
             Assert.assertEquals("invalid direction in data adjustment: SUBTRACT", e.getMessage());
@@ -416,9 +513,12 @@ public class DateDayOfWeekTest
     }
 
     /**
-     * <p>subtract_EOW_error.</p>
+     * <p>
+     * subtract_EOW_error.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void subtract_EOW_error()

@@ -11,11 +11,10 @@ enum UnitOfMeasure
     DAYOFWEEK,
     HOUR,
     MILLISECOND,
+    NANOSECOND,
     MINUTE,
     MONTH,
     SECOND,
     TIME,
-    WEEKOFMONTH,
-    WEEKOFYEAR,
     YEAR
 }

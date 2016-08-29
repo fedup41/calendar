@@ -1,11 +1,13 @@
 package com.obdobion.calendar;
 
-import java.util.Calendar;
+import java.time.LocalDateTime;
 
 import org.junit.Assert;
 
 /**
- * <p>CalendarFactoryHelper class.</p>
+ * <p>
+ * CalendarFactoryHelper class.
+ * </p>
  *
  * @author Chris DeGreef fedupforone@gmail.com
  * @since 1.0.1
@@ -14,12 +16,18 @@ public class CalendarFactoryHelper
 {
 
     /**
-     * <p>startExpectedComputed.</p>
+     * <p>
+     * startExpectedComputed.
+     * </p>
      *
-     * @param startingDateCommand a {@link java.lang.String} object.
-     * @param expectedDateCommand a {@link java.lang.String} object.
-     * @param computedDateCommand a {@link java.lang.String} object.
-     * @throws java.lang.Exception if any.
+     * @param startingDateCommand
+     *            a {@link java.lang.String} object.
+     * @param expectedDateCommand
+     *            a {@link java.lang.String} object.
+     * @param computedDateCommand
+     *            a {@link java.lang.String} object.
+     * @throws java.lang.Exception
+     *             if any.
      */
     static public void startExpectedComputed(
             final String startingDateCommand,
@@ -31,36 +39,52 @@ public class CalendarFactoryHelper
     }
 
     /**
-     * <p>startExpectedComputed.</p>
+     * <p>
+     * startExpectedComputed.
+     * </p>
      *
-     * @param startingDateCommand a {@link java.lang.String} object.
-     * @param expectedDateCommand a {@link java.lang.String} object.
-     * @param computedDateCommand a {@link java.lang.String} object.
-     * @param compareMillies a boolean.
-     * @throws java.lang.Exception if any.
+     * @param startingDateCommand
+     *            a {@link java.lang.String} object.
+     * @param expectedDateCommand
+     *            a {@link java.lang.String} object.
+     * @param computedDateCommand
+     *            a {@link java.lang.String} object.
+     * @param comparingNanos
+     *            a boolean.
+     * @throws java.lang.Exception
+     *             if any.
      */
     static public void startExpectedComputed(
             final String startingDateCommand,
             final String expectedDateCommand,
             final String computedDateCommand,
-            final boolean compareMillies)
+            final boolean comparingNanos)
                     throws Exception
     {
         CalendarFactory.setBusinessDate(null);
         CalendarFactory.setBusinessDate(CalendarFactory.nowX(startingDateCommand));
-        final Calendar expectedCalendar = CalendarFactory.nowX(expectedDateCommand);
+        final LocalDateTime expectedLDT = CalendarFactory.nowX(expectedDateCommand);
 
         CalendarFactory.setBusinessDate(null);
         CalendarFactory.setBusinessDate(CalendarFactory.nowX(startingDateCommand));
-        final Calendar computedCalendar = CalendarFactory.nowX(computedDateCommand);
+        final LocalDateTime computedLDT = CalendarFactory.nowX(computedDateCommand);
 
-        if (!compareMillies)
-        {
-            expectedCalendar.set(Calendar.MILLISECOND, 0);
-            computedCalendar.set(Calendar.MILLISECOND, 0);
-        }
+        Assert.assertEquals("YEAR (" + expectedLDT.toString() + ") != (" + computedLDT.toString() + ")",
+                expectedLDT.getYear(), computedLDT.getYear());
+        Assert.assertEquals("MONTH (" + expectedLDT.toString() + ") != (" + computedLDT.toString() + ")",
+                expectedLDT.getMonthValue(), computedLDT.getMonthValue());
+        Assert.assertEquals("DAY (" + expectedLDT.toString() + ") != (" + computedLDT.toString() + ")",
+                expectedLDT.getDayOfMonth(), computedLDT.getDayOfMonth());
+        Assert.assertEquals("HOUR (" + expectedLDT.toString() + ") != (" + computedLDT.toString() + ")",
+                expectedLDT.getHour(), computedLDT.getHour());
+        Assert.assertEquals("MINUTE (" + expectedLDT.toString() + ") != (" + computedLDT.toString() + ")",
+                expectedLDT.getMinute(), computedLDT.getMinute());
+        Assert.assertEquals("SECOND (" + expectedLDT.toString() + ") != (" + computedLDT.toString() + ")",
+                expectedLDT.getSecond(), computedLDT.getSecond());
+        /*-
+        Assert.assertEquals("NANO (" + expectedLDT.toString() + ") != (" + computedLDT.toString() + ")",
+                expectedLDT.getNano(), computedLDT.getNano());
+        */
 
-        Assert.assertEquals(expectedCalendar.getTime(), computedCalendar.getTime());
     }
-
 }

@@ -1,8 +1,10 @@
 package com.obdobion.calendar;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,7 +33,16 @@ public class TemporalHelper
     static final char                    tSep                = ':';
     static final String                  milliSep            = "\\.";
     static Matcher[]                     predefinedMat;
-    static SimpleDateFormat[]            predefinedFmt;
+    static DateTimeFormatter[]           predefinedFmt;
+    static boolean[]                     predefinedFmtWithDateOnly;
+
+    private static final String          patternYear         = "yyyy";
+    private static final String          patternMonth        = "MM";
+    private static final String          patternDay          = "dd";
+    private static final String          patternHour         = "HH";
+    private static final String          patternMinute       = "mm";
+    private static final String          patternSecond       = "ss";
+    private static final String          patternMilli        = "SSS";
 
     static String[]                      predefinedAlg;
     static final int                     numberOfDateFormats = 5;
@@ -47,15 +58,26 @@ public class TemporalHelper
 
     static private void createFormat(final String format)
     {
+        createFormat(format, false);
+    }
+
+    static private void createFormat(final String format, final boolean withDateOnly)
+    {
         if (format.charAt(0) == '*')
         {
             predefinedFmt[fmtMakerIndex] = null;
             predefinedAlg[fmtMakerIndex] = format.substring(1);
         } else
         {
-            predefinedFmt[fmtMakerIndex] = new SimpleDateFormat(format.trim());
+            predefinedFmt[fmtMakerIndex] = DateTimeFormatter.ofPattern(format.trim());
+            predefinedFmtWithDateOnly[fmtMakerIndex] = withDateOnly;
             predefinedAlg[fmtMakerIndex] = null;
         }
+    }
+
+    static private void createFormatWithDateOnly(final String format)
+    {
+        createFormat(format, true);
     }
 
     static private Matcher createMatcher(final String format)
@@ -78,7 +100,13 @@ public class TemporalHelper
                 * numberOfTimeFormats
                 + numberOfAlgos
                 + numberOfOneOffs];
-        predefinedFmt = new SimpleDateFormat[spaceSeps.length
+        predefinedFmt = new DateTimeFormatter[spaceSeps.length
+                * numberOfDateFormats
+                * seps.length
+                * numberOfTimeFormats
+                + numberOfAlgos
+                + numberOfOneOffs];
+        predefinedFmtWithDateOnly = new boolean[spaceSeps.length
                 * numberOfDateFormats
                 * seps.length
                 * numberOfTimeFormats
@@ -101,19 +129,19 @@ public class TemporalHelper
                 final char sep = seps[s];
 
                 dMatcher = mmFmt + sep + ddFmt + sep + yyFmt;
-                dFormat = "MM" + sep + "dd" + sep + "yyyy";
+                dFormat = patternMonth + sep + patternDay + sep + patternYear;
                 createWithTimePattern(dFormat, dMatcher, spaceSeps[space]);
 
                 dMatcher = yyFmt + sep + mmFmt + sep + ddFmt;
-                dFormat = "yyyy" + sep + "MM" + sep + "dd";
+                dFormat = patternYear + sep + patternMonth + sep + patternDay;
                 createWithTimePattern(dFormat, dMatcher, spaceSeps[space]);
 
                 dMatcher = yyFmt + sep + mmFmt;
-                dFormat = "yyyy" + sep + "MM";
+                dFormat = patternYear + sep + patternMonth;
                 createWithTimePattern(dFormat, dMatcher, spaceSeps[space]);
 
                 dMatcher = mmFmt + sep + yyFmt;
-                dFormat = "MM" + sep + "yyyy";
+                dFormat = patternMonth + sep + patternYear;
                 createWithTimePattern(dFormat, dMatcher, spaceSeps[space]);
                 /*
                  * No date, just time of day, assuming today as the date part.
@@ -146,7 +174,7 @@ public class TemporalHelper
              * Without time.
              */
             predefinedMat[++fmtMakerIndex] = createMatcher(dMatcher);
-            createFormat(dFormat);
+            createFormatWithDateOnly(dFormat);
 
             if (predefinedFmt[fmtMakerIndex] == null) // special algo
                 return;
@@ -158,28 +186,28 @@ public class TemporalHelper
          * With HH:mm:ss.SSS
          */
         tMatcher = hhFmt + tSep + miFmt + tSep + ssFmt + milliSep + zzFmt;
-        tFormat = "HH" + tSep + "mm" + tSep + "ss" + "." + "SSS";
+        tFormat = patternHour + tSep + patternMinute + tSep + patternSecond + "." + patternMilli;
         predefinedMat[++fmtMakerIndex] = createMatcher(dMatcher + space + tMatcher);
         createFormat(dFormat + space + tFormat);
         /*
          * With HH:mm:ss
          */
         tMatcher = hhFmt + tSep + miFmt + tSep + ssFmt;
-        tFormat = "HH" + tSep + "mm" + tSep + "ss";
+        tFormat = patternHour + tSep + patternMinute + tSep + patternSecond;
         predefinedMat[++fmtMakerIndex] = createMatcher(dMatcher + space + tMatcher);
         createFormat(dFormat + space + tFormat);
         /*
          * With HH:mm
          */
         tMatcher = hhFmt + tSep + miFmt;
-        tFormat = "HH" + tSep + "mm";
+        tFormat = patternHour + tSep + patternMinute;
         predefinedMat[++fmtMakerIndex] = createMatcher(dMatcher + space + tMatcher);
         createFormat(dFormat + space + tFormat);
         /*
          * With HH
          */
         tMatcher = hhFmt;
-        tFormat = "HH";
+        tFormat = patternHour;
         predefinedMat[++fmtMakerIndex] = createMatcher(dMatcher + space + tMatcher);
         createFormat(dFormat + space + tFormat);
     }
@@ -193,23 +221,34 @@ public class TemporalHelper
      *            a {@link java.lang.String} object.
      * @return a {@link java.util.Date} object.
      */
-    static Date parseSpecialDate(final String pattern)
+    static LocalDateTime parseSpecialDate(final String pattern)
     {
         if (TemporalHelper.specialAlgoTODAY.equalsIgnoreCase(pattern))
         {
-            final Calendar cal = Calendar.getInstance();
-            cal.set(Calendar.HOUR_OF_DAY, 0);
-            cal.set(Calendar.MINUTE, 0);
-            cal.set(Calendar.SECOND, 0);
-            cal.set(Calendar.MILLISECOND, 0);
-            return cal.getTime();
+            final LocalDateTime ldt = LocalDateTime.now();
+            return LocalDateTime.of(
+                    ldt.getYear(),
+                    ldt.getMonthValue(),
+                    ldt.getDayOfMonth(),
+                    0, 0, 0, 0);
         }
         if (TemporalHelper.specialAlgoNOW.equalsIgnoreCase(pattern))
-            return new Date();
-        return new Date();
+            return LocalDateTime.now();
+        return LocalDateTime.now();
     }
 
-    static public Date parseWithPredefinedParsers(final String valueStr) throws Exception
+    /**
+     * <p>
+     * parseWithPredefinedParsers.
+     * </p>
+     *
+     * @param valueStr
+     *            a {@link java.lang.String} object.
+     * @return a {@link java.util.Date} object.
+     * @throws java.lang.Exception
+     *             if any.
+     */
+    static public LocalDateTime parseWithPredefinedParsers(final String valueStr) throws Exception
     {
         createPredefinedDateFormats();
 
@@ -222,7 +261,10 @@ public class TemporalHelper
             {
                 if (TemporalHelper.predefinedFmt[f] == null)
                     return parseSpecialDate(TemporalHelper.predefinedAlg[f]);
-                return TemporalHelper.predefinedFmt[f].parse(valueStr);
+                if (TemporalHelper.predefinedFmtWithDateOnly[f])
+                    return LocalDateTime.of(
+                            LocalDate.parse(valueStr, TemporalHelper.predefinedFmt[f]), LocalTime.MIDNIGHT);
+                return LocalDateTime.parse(valueStr, TemporalHelper.predefinedFmt[f]);
             }
         }
         throw new Exception("not in a predefined date / time format (" + valueStr + ")");

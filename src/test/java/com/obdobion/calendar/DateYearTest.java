@@ -4,7 +4,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * <p>DateYearTest class.</p>
+ * <p>
+ * DateYearTest class.
+ * </p>
  *
  * @author Chris DeGreef fedupforone@gmail.com
  * @since 1.0.1
@@ -12,7 +14,9 @@ import org.junit.Test;
 public class DateYearTest
 {
     /**
-     * <p>Constructor for DateYearTest.</p>
+     * <p>
+     * Constructor for DateYearTest.
+     * </p>
      */
     public DateYearTest()
     {
@@ -20,9 +24,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>absoluteBeginningYear_next.</p>
+     * <p>
+     * absoluteBeginningYear_next.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void absoluteBeginningYear_next()
@@ -32,9 +39,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>absoluteEndYear_next.</p>
+     * <p>
+     * absoluteEndYear_next.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void absoluteEndYear_next()
@@ -44,9 +54,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>addBeginningYear_ERROR.</p>
+     * <p>
+     * addBeginningYear_ERROR.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void addBeginningYear_ERROR()
@@ -62,9 +75,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>addEndingYear_ERROR.</p>
+     * <p>
+     * addEndingYear_ERROR.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void addEndingYear_ERROR()
@@ -80,9 +96,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>addYear.</p>
+     * <p>
+     * addYear.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void addYear()
@@ -92,9 +111,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>nextBeginningYear.</p>
+     * <p>
+     * nextBeginningYear.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void nextBeginningYear()
@@ -104,9 +126,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>nextEndOfYear.</p>
+     * <p>
+     * nextEndOfYear.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void nextEndOfYear()
@@ -116,9 +141,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>nextOrThisBeginningYear_next.</p>
+     * <p>
+     * nextOrThisBeginningYear_next.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void nextOrThisBeginningYear_next()
@@ -128,9 +156,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>nextOrThisBeginningYear_this.</p>
+     * <p>
+     * nextOrThisBeginningYear_this.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void nextOrThisBeginningYear_this()
@@ -140,9 +171,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>nextOrThisEndOfYear.</p>
+     * <p>
+     * nextOrThisEndOfYear.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void nextOrThisEndOfYear()
@@ -152,9 +186,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>nextOrThisYear_ERROR.</p>
+     * <p>
+     * nextOrThisYear_ERROR.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void nextOrThisYear_ERROR()
@@ -170,9 +207,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>nextThisYear_ERROR.</p>
+     * <p>
+     * nextThisYear_ERROR.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void nextThisYear_ERROR()
@@ -188,9 +228,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>prevBeginningYear.</p>
+     * <p>
+     * prevBeginningYear.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prevBeginningYear()
@@ -200,9 +243,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>prevEndOfYear_next.</p>
+     * <p>
+     * prevEndOfYear_next.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prevEndOfYear_next()
@@ -212,9 +258,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>prevEndOfYear_this.</p>
+     * <p>
+     * prevEndOfYear_this.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prevEndOfYear_this()
@@ -224,9 +273,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>prevOrThisBeginningYear_prev.</p>
+     * <p>
+     * prevOrThisBeginningYear_prev.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prevOrThisBeginningYear_prev()
@@ -236,9 +288,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>prevOrThisEndOfYear_prev.</p>
+     * <p>
+     * prevOrThisEndOfYear_prev.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prevOrThisEndOfYear_prev()
@@ -248,9 +303,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>prevOrThisEndOfYear_this.</p>
+     * <p>
+     * prevOrThisEndOfYear_this.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prevOrThisEndOfYear_this()
@@ -260,9 +318,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>prevOrThisYear_ERROR.</p>
+     * <p>
+     * prevOrThisYear_ERROR.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prevOrThisYear_ERROR()
@@ -278,9 +339,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>prevThisYear_ERROR.</p>
+     * <p>
+     * prevThisYear_ERROR.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void prevThisYear_ERROR()
@@ -296,9 +360,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>subtractBeginningYear_ERROR.</p>
+     * <p>
+     * subtractBeginningYear_ERROR.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void subtractBeginningYear_ERROR()
@@ -314,9 +381,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>subtractEndingYear_ERROR.</p>
+     * <p>
+     * subtractEndingYear_ERROR.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void subtractEndingYear_ERROR()
@@ -332,9 +402,12 @@ public class DateYearTest
     }
 
     /**
-     * <p>subtractYear.</p>
+     * <p>
+     * subtractYear.
+     * </p>
      *
-     * @throws java.lang.Exception if any.
+     * @throws java.lang.Exception
+     *             if any.
      */
     @Test
     public void subtractYear()

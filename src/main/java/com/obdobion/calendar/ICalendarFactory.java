@@ -1,8 +1,7 @@
 package com.obdobion.calendar;
 
 import java.text.ParseException;
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -66,67 +65,20 @@ public interface ICalendarFactory
      * asFormula.
      * </p>
      *
-     * @param calendar
-     *            a {@link java.util.Calendar} object.
      * @return a {@link java.lang.String} object.
+     * @param ldt a {@link java.time.LocalDateTime} object.
      */
-    String asFormula(final Calendar calendar);
+    String asFormula(final LocalDateTime ldt);
 
     /**
-     * <p>
-     * atImpl.
-     * </p>
+     * <p>modifyImpl.</p>
      *
-     * @param milliseconds
-     *            a long.
-     * @return a {@link java.util.Calendar} object.
+     * @param startingDate a {@link java.time.LocalDateTime} object.
+     * @param adjustmentsArray a {@link java.lang.String} object.
+     * @return a {@link java.time.LocalDateTime} object.
+     * @throws java.text.ParseException if any.
      */
-    Calendar atImpl(long milliseconds);
-
-    /**
-     * <p>
-     * modifyImpl.
-     * </p>
-     *
-     * @param startingDate
-     *            a {@link java.util.Calendar} object.
-     * @param adjustmentsArray
-     *            a {@link java.lang.String} object.
-     * @return a {@link java.util.Calendar} object.
-     * @throws java.text.ParseException
-     *             if any.
-     */
-    Calendar modifyImpl(Calendar startingDate, String... adjustmentsArray) throws ParseException;
-
-    /**
-     * <p>
-     * modifyImpl.
-     * </p>
-     *
-     * @param startingDate
-     *            a {@link java.util.Date} object.
-     * @param adjustmentsArray
-     *            a {@link java.lang.String} object.
-     * @return a {@link java.util.Calendar} object.
-     * @throws java.text.ParseException
-     *             if any.
-     */
-    Calendar modifyImpl(Date startingDate, String... adjustmentsArray) throws ParseException;
-
-    /**
-     * <p>
-     * modifyImpl.
-     * </p>
-     *
-     * @param startingMilliseconds
-     *            a long.
-     * @param adjustmentsArray
-     *            a {@link java.lang.String} object.
-     * @return a {@link java.util.Calendar} object.
-     * @throws java.text.ParseException
-     *             if any.
-     */
-    Calendar modifyImpl(long startingMilliseconds, String... adjustmentsArray) throws ParseException;
+    LocalDateTime modifyImpl(LocalDateTime startingDate, String... adjustmentsArray) throws ParseException;
 
     /**
      * <p>
@@ -137,18 +89,7 @@ public interface ICalendarFactory
      *            a {@link java.util.Calendar} object.
      * @return a {@link java.util.Calendar} object.
      */
-    Calendar noTimeImpl(Calendar startingDate);
-
-    /**
-     * <p>
-     * noTimeImpl.
-     * </p>
-     *
-     * @param startingDate
-     *            a {@link java.util.Date} object.
-     * @return a {@link java.util.Date} object.
-     */
-    Date noTimeImpl(Date startingDate);
+    LocalDateTime noTimeImpl(LocalDateTime startingDate);
 
     /**
      * <p>
@@ -161,7 +102,7 @@ public interface ICalendarFactory
      * @throws java.text.ParseException
      *             if any.
      */
-    Calendar nowImpl(String... adjustmentsArray) throws ParseException;
+    LocalDateTime nowImpl(String... adjustmentsArray) throws ParseException;
 
     /**
      * <p>
@@ -170,8 +111,9 @@ public interface ICalendarFactory
      *
      * @param businessDate
      *            a {@link java.util.Calendar} object.
+     * @since 2.0.0
      */
-    void setBusinessDateImpl(Calendar businessDate);
+    void setOverrideForSystemTime(LocalDateTime businessDate);
 
     /**
      * <p>
@@ -184,5 +126,5 @@ public interface ICalendarFactory
      * @throws java.text.ParseException
      *             if any.
      */
-    Calendar todayImpl(String... adjustmentsArray) throws ParseException;
+    LocalDateTime todayImpl(String... adjustmentsArray) throws ParseException;
 }

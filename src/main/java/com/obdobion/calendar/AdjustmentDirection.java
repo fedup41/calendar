@@ -17,6 +17,13 @@ enum AdjustmentDirection
     PREVORTHIS('<', '='),
     SUBTRACT('-');
 
+    /**
+     * <p>find.</p>
+     *
+     * @param tokenValue a {@link java.lang.String} object.
+     * @return a {@link com.obdobion.calendar.AdjustmentDirection} object.
+     * @throws java.text.ParseException if any.
+     */
     static public AdjustmentDirection find(final String tokenValue) throws ParseException
     {
         char char1 = 0x00;
@@ -59,6 +66,11 @@ enum AdjustmentDirection
         secondChar = char2;
     }
 
+    /**
+     * <p>size.</p>
+     *
+     * @return a int.
+     */
     public int size()
     {
         if (secondChar == 0x00)
