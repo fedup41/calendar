@@ -50,11 +50,9 @@ public class TemporalHelper
      * parseWithPredefinedParsers.
      * </p>
      *
-     * @param valueStr
-     *            a {@link java.lang.String} object.
+     * @param valueStr a {@link java.lang.String} object.
      * @return a {@link java.util.Date} object.
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     static public LocalDateTime parseWithPredefinedParsers(final String valueStr) throws Exception
     {

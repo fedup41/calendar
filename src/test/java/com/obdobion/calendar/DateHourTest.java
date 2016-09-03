@@ -32,8 +32,7 @@ public class DateHourTest
      * add_hour.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -48,8 +47,7 @@ public class DateHourTest
      * add_invalidBeginning.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -71,8 +69,7 @@ public class DateHourTest
      * atBeforeCurrentTimeResultsInPastTime.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -87,8 +84,7 @@ public class DateHourTest
      * atEndOfHourWhenAtEnd.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -103,8 +99,7 @@ public class DateHourTest
      * atEndOfHourWhenNotAtEnd.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -119,8 +114,7 @@ public class DateHourTest
      * bug_nextOrThisAfterTheTimeInTheCurrentDay.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -135,8 +129,7 @@ public class DateHourTest
      * bug_nextOrThisAfterTheTimeInTheCurrentDayAtBegHour.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -151,8 +144,7 @@ public class DateHourTest
      * bug_nextOrThisAfterTheTimeInTheCurrentDayNoBTIME.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -167,8 +159,7 @@ public class DateHourTest
      * greaterBeforeCurrentTimeResultsInFutureTime.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -183,8 +174,7 @@ public class DateHourTest
      * itsBeginningOfHour_prevOrThis.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -199,8 +189,7 @@ public class DateHourTest
      * itsFirstHour_nextOrThisMidnight.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -215,8 +204,7 @@ public class DateHourTest
      * itsFirstHour_prevOrThisMidnight.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -231,8 +219,7 @@ public class DateHourTest
      * itsJustAfterMidnightHour_thisMidnight.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -247,8 +234,7 @@ public class DateHourTest
      * itsMidnight_prevHour.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -263,8 +249,7 @@ public class DateHourTest
      * itsMidnightHour_nextMidnight.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -279,8 +264,7 @@ public class DateHourTest
      * itsMidnightHour_nextOrThisMidnight.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -297,8 +281,7 @@ public class DateHourTest
      * itsNoonHour_at5pm.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -315,8 +298,7 @@ public class DateHourTest
      * itsNoonHour_atMidnight.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -331,8 +313,7 @@ public class DateHourTest
      * lessAfterTimeResultsInPastTime.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -347,8 +328,7 @@ public class DateHourTest
      * lessBeforeTimeResultsInExactTime.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -363,8 +343,7 @@ public class DateHourTest
      * lessOrEquals_equals.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -379,8 +358,7 @@ public class DateHourTest
      * lessOrEquals_greater.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -395,8 +373,7 @@ public class DateHourTest
      * nextEnd_AtEnd.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -411,8 +388,7 @@ public class DateHourTest
      * nextEnd_NotAtEnd.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -427,8 +403,7 @@ public class DateHourTest
      * nextOrThisEnd_AtEnd.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -443,8 +418,7 @@ public class DateHourTest
      * nextOrThisEnd_NotAtEnd.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -459,8 +433,7 @@ public class DateHourTest
      * nextOrThisHour_next.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -475,8 +448,7 @@ public class DateHourTest
      * nextOrThisHour_this.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -491,8 +463,7 @@ public class DateHourTest
      * prevEnd_AtEnd.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -507,8 +478,7 @@ public class DateHourTest
      * prevEnd_NotAtEnd.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -523,8 +493,7 @@ public class DateHourTest
      * prevOrThisEnd_AtEnd.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -539,8 +508,7 @@ public class DateHourTest
      * prevOrThisEnd_NotAtEnd.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -555,8 +523,7 @@ public class DateHourTest
      * subtract_hour.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -571,8 +538,7 @@ public class DateHourTest
      * subtract_invalidBeginning.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test

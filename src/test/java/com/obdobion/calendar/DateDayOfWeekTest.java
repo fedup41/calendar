@@ -28,8 +28,7 @@ public class DateDayOfWeekTest
      * at_BOW.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void at_BOW()
@@ -43,8 +42,7 @@ public class DateDayOfWeekTest
      * at_EOW.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void at_EOW()
@@ -58,8 +56,7 @@ public class DateDayOfWeekTest
      * next_BOW_NextDayInNextWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void next_BOW_NextDayInNextWeek()
@@ -73,8 +70,7 @@ public class DateDayOfWeekTest
      * next_DAY_NextDayInNextWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void next_DAY_NextDayInNextWeek()
@@ -88,8 +84,7 @@ public class DateDayOfWeekTest
      * next_DAY_NextDayInSameWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void next_DAY_NextDayInSameWeek()
@@ -103,8 +98,7 @@ public class DateDayOfWeekTest
      * next_EOW_NextDayInNextWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void next_EOW_NextDayInNextWeek()
@@ -118,8 +112,7 @@ public class DateDayOfWeekTest
      * nextEq_BOW_NextDayInNextWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void nextEq_BOW_NextDayInNextWeek()
@@ -133,8 +126,7 @@ public class DateDayOfWeekTest
      * nextEq_BOW_NextDayInSameWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void nextEq_BOW_NextDayInSameWeek()
@@ -148,8 +140,7 @@ public class DateDayOfWeekTest
      * nextEq_DAY_NextDayInNextWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void nextEq_DAY_NextDayInNextWeek()
@@ -163,8 +154,7 @@ public class DateDayOfWeekTest
      * nextEq_DAY_NextDayInSameWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void nextEq_DAY_NextDayInSameWeek()
@@ -178,8 +168,7 @@ public class DateDayOfWeekTest
      * nextEq_DAY_ThisDayIsOk.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void nextEq_DAY_ThisDayIsOk()
@@ -193,8 +182,7 @@ public class DateDayOfWeekTest
      * nextEq_EOW_NextDayInSameWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void nextEq_EOW_NextDayInSameWeek()
@@ -211,8 +199,7 @@ public class DateDayOfWeekTest
      * nextEq_EOW_NextDayIsOK.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void nextEq_EOW_NextDayIsOK()
@@ -226,8 +213,7 @@ public class DateDayOfWeekTest
      * plus_BOW_error.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void plus_BOW_error()
@@ -249,8 +235,7 @@ public class DateDayOfWeekTest
      * plus_DayOfWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void plus_DayOfWeek()
@@ -270,8 +255,7 @@ public class DateDayOfWeekTest
      * plus_EOW_error.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void plus_EOW_error()
@@ -293,8 +277,7 @@ public class DateDayOfWeekTest
      * prev_BOW_PrevDayInPrevWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void prev_BOW_PrevDayInPrevWeek()
@@ -308,8 +291,7 @@ public class DateDayOfWeekTest
      * prev_BOW_PrevDayInSameWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void prev_BOW_PrevDayInSameWeek()
@@ -323,8 +305,7 @@ public class DateDayOfWeekTest
      * prev_DAY_PrevDayInPrevWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void prev_DAY_PrevDayInPrevWeek()
@@ -338,8 +319,7 @@ public class DateDayOfWeekTest
      * prev_DAY_PrevDayInSameWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void prev_DAY_PrevDayInSameWeek()
@@ -353,8 +333,7 @@ public class DateDayOfWeekTest
      * prev_EOW_PrevDayInPrevWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void prev_EOW_PrevDayInPrevWeek()
@@ -368,8 +347,7 @@ public class DateDayOfWeekTest
      * prevEq_BOW_PrevDayInSameWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void prevEq_BOW_PrevDayInSameWeek()
@@ -383,8 +361,7 @@ public class DateDayOfWeekTest
      * prevEq_BOW_ThisDayIsOk.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void prevEq_BOW_ThisDayIsOk()
@@ -398,8 +375,7 @@ public class DateDayOfWeekTest
      * prevEq_DAY_PrevDayInPrevWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void prevEq_DAY_PrevDayInPrevWeek()
@@ -413,8 +389,7 @@ public class DateDayOfWeekTest
      * prevEq_DAY_PrevDayInSameWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void prevEq_DAY_PrevDayInSameWeek()
@@ -428,8 +403,7 @@ public class DateDayOfWeekTest
      * prevEq_DAY_ThisDayIsOk.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void prevEq_DAY_ThisDayIsOk()
@@ -443,8 +417,7 @@ public class DateDayOfWeekTest
      * prevEq_EOW_PrevDayInSameWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void prevEq_EOW_PrevDayInSameWeek()
@@ -458,8 +431,7 @@ public class DateDayOfWeekTest
      * prevEq_EOW_ThisDayIsOk.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void prevEq_EOW_ThisDayIsOk()
@@ -473,8 +445,7 @@ public class DateDayOfWeekTest
      * subtract_BOW_error.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void subtract_BOW_error()
@@ -496,8 +467,7 @@ public class DateDayOfWeekTest
      * subtract_DayOfWeek.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void subtract_DayOfWeek()
@@ -517,8 +487,7 @@ public class DateDayOfWeekTest
      * subtract_EOW_error.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void subtract_EOW_error()

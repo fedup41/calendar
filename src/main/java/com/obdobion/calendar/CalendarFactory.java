@@ -28,8 +28,7 @@ public class CalendarFactory
      * asCalendar.
      * </p>
      *
-     * @param ldt
-     *            a {@link java.time.LocalDateTime} object.
+     * @param ldt a {@link java.time.LocalDateTime} object.
      * @return a {@link java.util.Calendar} object.
      */
     static public Calendar asCalendar(final LocalDateTime ldt)
@@ -44,8 +43,7 @@ public class CalendarFactory
      * asDate.
      * </p>
      *
-     * @param ldt
-     *            a {@link java.time.LocalDateTime} object.
+     * @param ldt a {@link java.time.LocalDateTime} object.
      * @return a {@link java.util.Date} object.
      */
     static public Date asDate(final LocalDateTime ldt)
@@ -58,8 +56,7 @@ public class CalendarFactory
      * asDateLong.
      * </p>
      *
-     * @param ldt
-     *            a {@link java.time.LocalDateTime} object.
+     * @param ldt a {@link java.time.LocalDateTime} object.
      * @return a long.
      */
     static public long asDateLong(final LocalDateTime ldt)
@@ -74,8 +71,7 @@ public class CalendarFactory
      * asFormula.
      * </p>
      *
-     * @param calendar
-     *            a {@link java.util.Calendar} object.
+     * @param calendar a {@link java.util.Calendar} object.
      * @return a {@link java.lang.String} object.
      */
     static public String asFormula(final Calendar calendar)
@@ -89,8 +85,7 @@ public class CalendarFactory
      * asFormula.
      * </p>
      *
-     * @param date
-     *            a {@link java.util.Date} object.
+     * @param date a {@link java.util.Date} object.
      * @return a {@link java.lang.String} object.
      */
     static public String asFormula(final Date date)
@@ -103,8 +98,7 @@ public class CalendarFactory
      * asFormula.
      * </p>
      *
-     * @param calendar
-     *            a {@link java.time.LocalDateTime} object.
+     * @param calendar a {@link java.time.LocalDateTime} object.
      * @return a {@link java.lang.String} object.
      * @since 2.0.0
      */
@@ -118,8 +112,7 @@ public class CalendarFactory
      * asJSON.
      * </p>
      *
-     * @param calendar
-     *            a {@link java.util.Calendar} object.
+     * @param calendar a {@link java.util.Calendar} object.
      * @return a {@link java.lang.String} object.
      */
     static public String asJSON(final Calendar calendar)
@@ -132,8 +125,7 @@ public class CalendarFactory
      * asJSON.
      * </p>
      *
-     * @param ldt
-     *            a {@link java.util.Calendar} object.
+     * @param ldt a {@link java.util.Calendar} object.
      * @return a {@link java.lang.String} object.
      * @since 2.0.0
      */
@@ -147,8 +139,7 @@ public class CalendarFactory
      * at.
      * </p>
      *
-     * @param milliseconds
-     *            a long.
+     * @param milliseconds a long.
      * @return a {@link java.util.Calendar} object.
      */
     static public LocalDateTime at(final long milliseconds)
@@ -164,8 +155,7 @@ public class CalendarFactory
      * convert.
      * </p>
      *
-     * @param calendar
-     *            a {@link java.util.Calendar} object.
+     * @param calendar a {@link java.util.Calendar} object.
      * @return a {@link java.time.LocalDateTime} object.
      * @since 2.0.0
      */
@@ -179,8 +169,7 @@ public class CalendarFactory
      * convert.
      * </p>
      *
-     * @param date
-     *            a {@link java.util.Date} object.
+     * @param date a {@link java.util.Date} object.
      * @return a {@link java.time.LocalDateTime} object.
      * @since 2.0.0
      */
@@ -194,8 +183,7 @@ public class CalendarFactory
      * convert.
      * </p>
      *
-     * @param date
-     *            a {@link java.time.LocalDate} object.
+     * @param date a {@link java.time.LocalDate} object.
      * @return a {@link java.time.LocalDateTime} object.
      * @since 2.0.1
      */
@@ -209,8 +197,7 @@ public class CalendarFactory
      * convert.
      * </p>
      *
-     * @param time
-     *            a {@link java.time.LocalTime} object.
+     * @param time a {@link java.time.LocalTime} object.
      * @return a {@link java.time.LocalDateTime} object.
      * @since 2.0.1
      */
@@ -224,8 +211,7 @@ public class CalendarFactory
      * convert.
      * </p>
      *
-     * @param epochSecond
-     *            a long.
+     * @param epochSecond a long.
      * @return a {@link java.time.LocalDateTime} object.
      * @since 2.0.0
      */
@@ -266,10 +252,8 @@ public class CalendarFactory
      * acceptable and are assumed to be more adjusts. This just provides
      * flexibility in how this method can be called.
      *
-     * @param startingDate
-     *            a {@link java.util.Calendar} object.
-     * @param adjustmentsArray
-     *            a {@link java.lang.String} object.
+     * @param startingDate a {@link java.util.Calendar} object.
+     * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
      */
     static public LocalDateTime modify(final Calendar startingDate, final String... adjustmentsArray)
@@ -289,10 +273,8 @@ public class CalendarFactory
      * acceptable and are assumed to be more adjusts. This just provides
      * flexibility in how this method can be called.
      *
-     * @param startingDate
-     *            a {@link java.util.Date} object.
-     * @param adjustmentsArray
-     *            a {@link java.lang.String} object.
+     * @param startingDate a {@link java.util.Date} object.
+     * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
      */
     static public LocalDateTime modify(final Date startingDate, final String... adjustmentsArray)
@@ -312,10 +294,8 @@ public class CalendarFactory
      * acceptable and are assumed to be more adjusts. This just provides
      * flexibility in how this method can be called.
      *
-     * @param startingDate
-     *            a {@link java.util.Calendar} object.
-     * @param adjustmentsArray
-     *            a {@link java.lang.String} object.
+     * @param startingDate a {@link java.util.Calendar} object.
+     * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
      */
     static public LocalDateTime modify(final LocalDate startingDate, final String... adjustmentsArray)
@@ -335,10 +315,8 @@ public class CalendarFactory
      * modify.
      * </p>
      *
-     * @param startingDate
-     *            a {@link java.time.LocalDateTime} object.
-     * @param adjustmentsArray
-     *            a {@link java.lang.String} object.
+     * @param startingDate a {@link java.time.LocalDateTime} object.
+     * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.time.LocalDateTime} object.
      */
     static public LocalDateTime modify(final LocalDateTime startingDate, final String... adjustmentsArray)
@@ -358,10 +336,8 @@ public class CalendarFactory
      * acceptable and are assumed to be more adjusts. This just provides
      * flexibility in how this method can be called.
      *
-     * @param startingDate
-     *            a {@link java.time.LocalTime} object.
-     * @param adjustmentsArray
-     *            a {@link java.lang.String} object.
+     * @param startingDate a {@link java.time.LocalTime} object.
+     * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
      */
     static public LocalDateTime modify(final LocalTime startingDate, final String... adjustmentsArray)
@@ -381,10 +357,8 @@ public class CalendarFactory
      * modify.
      * </p>
      *
-     * @param startingMilliseconds
-     *            a long.
-     * @param adjustmentsArray
-     *            a {@link java.lang.String} object.
+     * @param startingMilliseconds a long.
+     * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
      */
     static public LocalDateTime modify(final long startingMilliseconds, final String... adjustmentsArray)
@@ -404,10 +378,8 @@ public class CalendarFactory
      * modify.
      * </p>
      *
-     * @param startingDate
-     *            a {@link java.lang.String} object.
-     * @param adjustmentsArray
-     *            a {@link java.lang.String} object.
+     * @param startingDate a {@link java.lang.String} object.
+     * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.time.LocalDateTime} object.
      */
     static public LocalDateTime modify(final String startingDate, final String... adjustmentsArray)
@@ -427,8 +399,7 @@ public class CalendarFactory
      * noTime.
      * </p>
      *
-     * @param startingDate
-     *            a {@link java.util.Calendar} object.
+     * @param startingDate a {@link java.util.Calendar} object.
      * @return a {@link java.util.Calendar} object.
      */
     static public LocalDateTime noTime(final Calendar startingDate)
@@ -441,8 +412,7 @@ public class CalendarFactory
      * noTime.
      * </p>
      *
-     * @param startingDate
-     *            a {@link java.util.Date} object.
+     * @param startingDate a {@link java.util.Date} object.
      * @return a {@link java.util.Date} object.
      */
     static public LocalDateTime noTime(final Date startingDate)
@@ -455,8 +425,7 @@ public class CalendarFactory
      * noTime.
      * </p>
      *
-     * @param startingDate
-     *            a {@link java.util.Date} object.
+     * @param startingDate a {@link java.util.Date} object.
      * @return a {@link java.util.Date} object.
      */
     static public LocalDateTime noTime(final LocalDateTime startingDate)
@@ -470,8 +439,7 @@ public class CalendarFactory
      * flexibility in how this method can be called. The computation starts at
      * the exact millisecond this method is called
      *
-     * @param adjustmentsArray
-     *            a {@link java.lang.String} object.
+     * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
      */
     static public LocalDateTime now(final String... adjustmentsArray)
@@ -491,11 +459,9 @@ public class CalendarFactory
      * nowX.
      * </p>
      *
-     * @param adjustmentsArray
-     *            a {@link java.lang.String} object.
+     * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
-     * @throws java.text.ParseException
-     *             if any.
+     * @throws java.text.ParseException if any.
      */
     static public LocalDateTime nowX(final String... adjustmentsArray) throws ParseException
     {
@@ -507,8 +473,8 @@ public class CalendarFactory
      * reset.
      * </p>
      *
-     * @param newFactory
-     *            a {@link com.obdobion.calendar.ICalendarFactory} object.
+     * @param newFactory a {@link com.obdobion.calendar.ICalendarFactory}
+     *            object.
      * @return a {@link com.obdobion.calendar.ICalendarFactory} object.
      */
     static public ICalendarFactory reset(final ICalendarFactory newFactory)
@@ -523,8 +489,7 @@ public class CalendarFactory
      * setBusinessDate.
      * </p>
      *
-     * @param businessDate
-     *            a {@link java.util.Calendar} object.
+     * @param businessDate a {@link java.util.Calendar} object.
      */
     static public void setBusinessDate(final LocalDateTime businessDate)
     {
@@ -536,8 +501,7 @@ public class CalendarFactory
      * Setter for the field <code>inDebug</code>.
      * </p>
      *
-     * @param inDebug_parm
-     *            a boolean.
+     * @param inDebug_parm a boolean.
      */
     static public void setInDebug(final boolean inDebug_parm)
     {
@@ -550,8 +514,7 @@ public class CalendarFactory
      * flexibility in how this method can be called. The computation starts at
      * the beginning of the current date.
      *
-     * @param adjustmentsArray
-     *            a {@link java.lang.String} object.
+     * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
      */
     static public LocalDateTime today(final String... adjustmentsArray)

@@ -32,8 +32,7 @@ public class DateMinuteTest
      * add_invalidBeginning.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -55,8 +54,7 @@ public class DateMinuteTest
      * add_minute.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -71,8 +69,7 @@ public class DateMinuteTest
      * atBeforeCurrentTimeResultsInPastTime.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -87,8 +84,7 @@ public class DateMinuteTest
      * atEndWhenAtEnd.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -103,8 +99,7 @@ public class DateMinuteTest
      * atEndWhenNotAtEnd.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -119,8 +114,7 @@ public class DateMinuteTest
      * beginningAt.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -137,8 +131,7 @@ public class DateMinuteTest
      * beginningNext.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -153,8 +146,7 @@ public class DateMinuteTest
      * beginningNextOrThis_beginning.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -169,8 +161,7 @@ public class DateMinuteTest
      * beginningNextOrThis_notBeginning.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -186,8 +177,7 @@ public class DateMinuteTest
      * beginningPrev_after.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -202,8 +192,7 @@ public class DateMinuteTest
      * beginningPrev_beginning.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -218,8 +207,7 @@ public class DateMinuteTest
      * beginningPrevOrThis_after.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -234,8 +222,7 @@ public class DateMinuteTest
      * beginningPrevOrThis_beginning.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -250,8 +237,7 @@ public class DateMinuteTest
      * endingNext_ending.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -266,8 +252,7 @@ public class DateMinuteTest
      * endingNext_notEnding.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -282,8 +267,7 @@ public class DateMinuteTest
      * endingNextOrThis_ending.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -298,8 +282,7 @@ public class DateMinuteTest
      * endingNextOrThis_notEnding.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -314,8 +297,7 @@ public class DateMinuteTest
      * endingPrev_ending.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -330,8 +312,7 @@ public class DateMinuteTest
      * endingPrev_notEnding.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -346,8 +327,7 @@ public class DateMinuteTest
      * endingPrevOrThis_ending.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -362,8 +342,7 @@ public class DateMinuteTest
      * endingPrevOrThis_notEnding.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -378,8 +357,7 @@ public class DateMinuteTest
      * greaterBeforeCurrentTimeResultsInFutureTime.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -394,8 +372,7 @@ public class DateMinuteTest
      * nextOrThisMinute_after.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -410,8 +387,7 @@ public class DateMinuteTest
      * nextOrThisMinute_before.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -426,8 +402,7 @@ public class DateMinuteTest
      * nextOrThisMinute_same.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -442,8 +417,7 @@ public class DateMinuteTest
      * prev_after.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -458,8 +432,7 @@ public class DateMinuteTest
      * prev_before.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -474,8 +447,7 @@ public class DateMinuteTest
      * prev_same.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -490,8 +462,7 @@ public class DateMinuteTest
      * prevOrThis_after.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -506,8 +477,7 @@ public class DateMinuteTest
      * prevOrThis_before.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test
@@ -522,8 +492,7 @@ public class DateMinuteTest
      * prevOrThis_same.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      * @since 2.0.0
      */
     @Test

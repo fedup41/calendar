@@ -20,14 +20,10 @@ public class CalendarFactoryHelper
      * startExpectedComputed.
      * </p>
      *
-     * @param startingDateCommand
-     *            a {@link java.lang.String} object.
-     * @param expectedDateCommand
-     *            a {@link java.lang.String} object.
-     * @param computedDateCommand
-     *            a {@link java.lang.String} object.
-     * @throws java.lang.Exception
-     *             if any.
+     * @param startingDateCommand a {@link java.lang.String} object.
+     * @param expectedDateCommand a {@link java.lang.String} object.
+     * @param computedDateCommand a {@link java.lang.String} object.
+     * @throws java.lang.Exception if any.
      */
     static public void startExpectedComputed(
             final String startingDateCommand,
@@ -43,16 +39,11 @@ public class CalendarFactoryHelper
      * startExpectedComputed.
      * </p>
      *
-     * @param startingDateCommand
-     *            a {@link java.lang.String} object.
-     * @param expectedDateCommand
-     *            a {@link java.lang.String} object.
-     * @param computedDateCommand
-     *            a {@link java.lang.String} object.
-     * @param comparingNanos
-     *            a boolean.
-     * @throws java.lang.Exception
-     *             if any.
+     * @param startingDateCommand a {@link java.lang.String} object.
+     * @param expectedDateCommand a {@link java.lang.String} object.
+     * @param computedDateCommand a {@link java.lang.String} object.
+     * @param comparingNanos a boolean.
+     * @throws java.lang.Exception if any.
      */
     static public void startExpectedComputed(
             final String startingDateCommand,
@@ -83,7 +74,7 @@ public class CalendarFactoryHelper
                 expectedLDT.getSecond(), computedLDT.getSecond());
         /*-
         Assert.assertEquals("NANO (" + expectedLDT.toString() + ") != (" + computedLDT.toString() + ")",
-                expectedLDT.getNano(), computedLDT.getNano());
+            expectedLDT.getNano(), computedLDT.getNano());
         */
 
     }

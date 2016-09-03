@@ -4,7 +4,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * <p>DateParserErrorTest class.</p>
+ * <p>
+ * DateParserErrorTest class.
+ * </p>
  *
  * @author Chris DeGreef fedupforone@gmail.com
  * @since 1.0.1
@@ -13,7 +15,9 @@ public class DateParserErrorTest
 {
 
     /**
-     * <p>directionIsRequired.</p>
+     * <p>
+     * directionIsRequired.
+     * </p>
      *
      * @throws java.lang.Exception if any.
      */
@@ -33,7 +37,9 @@ public class DateParserErrorTest
     }
 
     /**
-     * <p>invalidUOM.</p>
+     * <p>
+     * invalidUOM.
+     * </p>
      *
      * @throws java.lang.Exception if any.
      */
@@ -53,7 +59,9 @@ public class DateParserErrorTest
     }
 
     /**
-     * <p>missingQTY.</p>
+     * <p>
+     * missingQTY.
+     * </p>
      *
      * @throws java.lang.Exception if any.
      */
@@ -73,7 +81,9 @@ public class DateParserErrorTest
     }
 
     /**
-     * <p>spaceForQty.</p>
+     * <p>
+     * spaceForQty.
+     * </p>
      *
      * @throws java.lang.Exception if any.
      */
@@ -93,7 +103,9 @@ public class DateParserErrorTest
     }
 
     /**
-     * <p>uomIsRequired.</p>
+     * <p>
+     * uomIsRequired.
+     * </p>
      *
      * @throws java.lang.Exception if any.
      */

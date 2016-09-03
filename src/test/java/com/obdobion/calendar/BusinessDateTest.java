@@ -21,16 +21,14 @@ public class BusinessDateTest
      * </p>
      */
     public BusinessDateTest()
-    {
-    }
+    {}
 
     /**
      * <p>
      * largeNegative.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void largeNegative() throws Exception
@@ -45,8 +43,7 @@ public class BusinessDateTest
      * largePositive.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void largePositive() throws Exception
@@ -61,8 +58,7 @@ public class BusinessDateTest
      * smallNegative.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void smallNegative() throws Exception
@@ -77,8 +73,7 @@ public class BusinessDateTest
      * smallPositive.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void smallPositive() throws Exception
@@ -93,8 +88,7 @@ public class BusinessDateTest
      * smallPositive.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void specialDateMMM_default() throws Exception
@@ -107,8 +101,7 @@ public class BusinessDateTest
      * smallPositive.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void specialDateMMM_EU() throws Exception

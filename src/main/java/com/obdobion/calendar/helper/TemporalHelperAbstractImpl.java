@@ -256,8 +256,7 @@ public abstract class TemporalHelperAbstractImpl implements ITemporalHelperImpl
      * parseSpecialDate.
      * </p>
      *
-     * @param pattern
-     *            a {@link java.lang.String} object.
+     * @param pattern a {@link java.lang.String} object.
      * @return a {@link java.util.Date} object.
      */
     LocalDateTime parseSpecialDate(final String pattern)
@@ -281,11 +280,9 @@ public abstract class TemporalHelperAbstractImpl implements ITemporalHelperImpl
      * parseWithPredefinedParsers.
      * </p>
      *
-     * @param valueStr
-     *            a {@link java.lang.String} object.
+     * @param valueStr a {@link java.lang.String} object.
      * @return a {@link java.util.Date} object.
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Override
     public LocalDateTime parseWithPredefinedParsers(final String valueStr) throws Exception

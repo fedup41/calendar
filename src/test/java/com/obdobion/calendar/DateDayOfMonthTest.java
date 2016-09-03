@@ -3,7 +3,9 @@ package com.obdobion.calendar;
 import org.junit.Test;
 
 /**
- * <p>DateDayOfMonthTest class.</p>
+ * <p>
+ * DateDayOfMonthTest class.
+ * </p>
  *
  * @author Chris DeGreef fedupforone@gmail.com
  * @since 1.0.1
@@ -11,7 +13,9 @@ import org.junit.Test;
 public class DateDayOfMonthTest
 {
     /**
-     * <p>Constructor for DateDayOfMonthTest.</p>
+     * <p>
+     * Constructor for DateDayOfMonthTest.
+     * </p>
      */
     public DateDayOfMonthTest()
     {
@@ -19,7 +23,9 @@ public class DateDayOfMonthTest
     }
 
     /**
-     * <p>back12Months.</p>
+     * <p>
+     * back12Months.
+     * </p>
      *
      * @throws java.lang.Exception if any.
      */
@@ -31,7 +37,9 @@ public class DateDayOfMonthTest
     }
 
     /**
-     * <p>forward12Months.</p>
+     * <p>
+     * forward12Months.
+     * </p>
      *
      * @throws java.lang.Exception if any.
      */
@@ -43,7 +51,9 @@ public class DateDayOfMonthTest
     }
 
     /**
-     * <p>from30to31backward.</p>
+     * <p>
+     * from30to31backward.
+     * </p>
      *
      * @throws java.lang.Exception if any.
      */
@@ -55,7 +65,9 @@ public class DateDayOfMonthTest
     }
 
     /**
-     * <p>from30to31forward.</p>
+     * <p>
+     * from30to31forward.
+     * </p>
      *
      * @throws java.lang.Exception if any.
      */
@@ -67,7 +79,9 @@ public class DateDayOfMonthTest
     }
 
     /**
-     * <p>from31to30backward.</p>
+     * <p>
+     * from31to30backward.
+     * </p>
      *
      * @throws java.lang.Exception if any.
      */
@@ -79,7 +93,9 @@ public class DateDayOfMonthTest
     }
 
     /**
-     * <p>from31to30forward.</p>
+     * <p>
+     * from31to30forward.
+     * </p>
      *
      * @throws java.lang.Exception if any.
      */

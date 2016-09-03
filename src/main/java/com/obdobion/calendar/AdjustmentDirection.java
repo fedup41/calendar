@@ -18,7 +18,9 @@ enum AdjustmentDirection
     SUBTRACT('-');
 
     /**
-     * <p>find.</p>
+     * <p>
+     * find.
+     * </p>
      *
      * @param tokenValue a {@link java.lang.String} object.
      * @return a {@link com.obdobion.calendar.AdjustmentDirection} object.
@@ -67,7 +69,9 @@ enum AdjustmentDirection
     }
 
     /**
-     * <p>size.</p>
+     * <p>
+     * size.
+     * </p>
      *
      * @return a int.
      */

@@ -71,7 +71,9 @@ public interface ICalendarFactory
     String asFormula(final LocalDateTime ldt);
 
     /**
-     * <p>modifyImpl.</p>
+     * <p>
+     * modifyImpl.
+     * </p>
      *
      * @param startingDate a {@link java.time.LocalDateTime} object.
      * @param adjustmentsArray a {@link java.lang.String} object.
@@ -85,8 +87,7 @@ public interface ICalendarFactory
      * noTimeImpl.
      * </p>
      *
-     * @param startingDate
-     *            a {@link java.util.Calendar} object.
+     * @param startingDate a {@link java.util.Calendar} object.
      * @return a {@link java.util.Calendar} object.
      */
     LocalDateTime noTimeImpl(LocalDateTime startingDate);
@@ -96,11 +97,9 @@ public interface ICalendarFactory
      * nowImpl.
      * </p>
      *
-     * @param adjustmentsArray
-     *            a {@link java.lang.String} object.
+     * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
-     * @throws java.text.ParseException
-     *             if any.
+     * @throws java.text.ParseException if any.
      */
     LocalDateTime nowImpl(String... adjustmentsArray) throws ParseException;
 
@@ -109,8 +108,7 @@ public interface ICalendarFactory
      * setBusinessDateImpl.
      * </p>
      *
-     * @param businessDate
-     *            a {@link java.util.Calendar} object.
+     * @param businessDate a {@link java.util.Calendar} object.
      * @since 2.0.0
      */
     void setOverrideForSystemTime(LocalDateTime businessDate);
@@ -120,11 +118,9 @@ public interface ICalendarFactory
      * todayImpl.
      * </p>
      *
-     * @param adjustmentsArray
-     *            a {@link java.lang.String} object.
+     * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
-     * @throws java.text.ParseException
-     *             if any.
+     * @throws java.text.ParseException if any.
      */
     LocalDateTime todayImpl(String... adjustmentsArray) throws ParseException;
 }

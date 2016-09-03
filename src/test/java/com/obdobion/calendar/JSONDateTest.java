@@ -22,16 +22,14 @@ public class JSONDateTest
      * </p>
      */
     public JSONDateTest()
-    {
-    }
+    {}
 
     /**
      * <p>
      * basicConstructor.
      * </p>
      *
-     * @throws java.lang.Exception
-     *             if any.
+     * @throws java.lang.Exception if any.
      */
     @Test
     public void basicConstructor() throws Exception
