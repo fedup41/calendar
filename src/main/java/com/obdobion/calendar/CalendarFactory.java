@@ -3,7 +3,9 @@ package com.obdobion.calendar;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
@@ -21,6 +23,15 @@ public class CalendarFactory
     static private ICalendarFactory instance;
     static final SimpleDateFormat   jsonDateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 
+    /**
+     * <p>
+     * asCalendar.
+     * </p>
+     *
+     * @param ldt
+     *            a {@link java.time.LocalDateTime} object.
+     * @return a {@link java.util.Calendar} object.
+     */
     static public Calendar asCalendar(final LocalDateTime ldt)
     {
         final Calendar cal = Calendar.getInstance();
@@ -28,11 +39,29 @@ public class CalendarFactory
         return cal;
     }
 
+    /**
+     * <p>
+     * asDate.
+     * </p>
+     *
+     * @param ldt
+     *            a {@link java.time.LocalDateTime} object.
+     * @return a {@link java.util.Date} object.
+     */
     static public Date asDate(final LocalDateTime ldt)
     {
         return new Date(asDateLong(ldt));
     }
 
+    /**
+     * <p>
+     * asDateLong.
+     * </p>
+     *
+     * @param ldt
+     *            a {@link java.time.LocalDateTime} object.
+     * @return a long.
+     */
     static public long asDateLong(final LocalDateTime ldt)
     {
         final long seconds = ldt.atZone(ZoneId.systemDefault()).toEpochSecond();
@@ -165,6 +194,36 @@ public class CalendarFactory
      * convert.
      * </p>
      *
+     * @param date
+     *            a {@link java.time.LocalDate} object.
+     * @return a {@link java.time.LocalDateTime} object.
+     * @since 2.0.1
+     */
+    static public LocalDateTime convert(final LocalDate date)
+    {
+        return LocalDateTime.of(date, LocalTime.MIN);
+    }
+
+    /**
+     * <p>
+     * convert.
+     * </p>
+     *
+     * @param time
+     *            a {@link java.time.LocalTime} object.
+     * @return a {@link java.time.LocalDateTime} object.
+     * @since 2.0.1
+     */
+    static public LocalDateTime convert(final LocalTime time)
+    {
+        return LocalDateTime.of(LocalDate.MIN, time);
+    }
+
+    /**
+     * <p>
+     * convert.
+     * </p>
+     *
      * @param epochSecond
      *            a long.
      * @return a {@link java.time.LocalDateTime} object.
@@ -249,6 +308,29 @@ public class CalendarFactory
     }
 
     /**
+     * The adjustments are separated by a space. Multiple elements are
+     * acceptable and are assumed to be more adjusts. This just provides
+     * flexibility in how this method can be called.
+     *
+     * @param startingDate
+     *            a {@link java.util.Calendar} object.
+     * @param adjustmentsArray
+     *            a {@link java.lang.String} object.
+     * @return a {@link java.util.Calendar} object.
+     */
+    static public LocalDateTime modify(final LocalDate startingDate, final String... adjustmentsArray)
+    {
+        try
+        {
+            return getInstance().modifyImpl(convert(startingDate), adjustmentsArray);
+        } catch (final ParseException e)
+        {
+            e.printStackTrace();
+            return LocalDateTime.now();
+        }
+    }
+
+    /**
      * <p>
      * modify.
      * </p>
@@ -264,6 +346,29 @@ public class CalendarFactory
         try
         {
             return getInstance().modifyImpl(startingDate, adjustmentsArray);
+        } catch (final ParseException e)
+        {
+            e.printStackTrace();
+            return LocalDateTime.now();
+        }
+    }
+
+    /**
+     * The adjustments are separated by a space. Multiple elements are
+     * acceptable and are assumed to be more adjusts. This just provides
+     * flexibility in how this method can be called.
+     *
+     * @param startingDate
+     *            a {@link java.time.LocalTime} object.
+     * @param adjustmentsArray
+     *            a {@link java.lang.String} object.
+     * @return a {@link java.util.Calendar} object.
+     */
+    static public LocalDateTime modify(final LocalTime startingDate, final String... adjustmentsArray)
+    {
+        try
+        {
+            return getInstance().modifyImpl(convert(startingDate), adjustmentsArray);
         } catch (final ParseException e)
         {
             e.printStackTrace();
