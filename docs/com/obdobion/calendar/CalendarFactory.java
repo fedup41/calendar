@@ -255,6 +255,7 @@ public class CalendarFactory
      * @param startingDate a {@link java.util.Calendar} object.
      * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
+     * @throws java.text.ParseException if any.
      */
     static public LocalDateTime modify(final Calendar startingDate, final String... adjustmentsArray)
             throws ParseException
@@ -270,6 +271,7 @@ public class CalendarFactory
      * @param startingDate a {@link java.util.Date} object.
      * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
+     * @throws java.text.ParseException if any.
      */
     static public LocalDateTime modify(final Date startingDate, final String... adjustmentsArray)
             throws ParseException
@@ -285,6 +287,7 @@ public class CalendarFactory
      * @param startingDate a {@link java.util.Calendar} object.
      * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
+     * @throws java.text.ParseException if any.
      */
     static public LocalDateTime modify(final LocalDate startingDate, final String... adjustmentsArray)
             throws ParseException
@@ -300,6 +303,7 @@ public class CalendarFactory
      * @param startingDate a {@link java.time.LocalDateTime} object.
      * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.time.LocalDateTime} object.
+     * @throws java.text.ParseException if any.
      */
     static public LocalDateTime modify(final LocalDateTime startingDate, final String... adjustmentsArray)
             throws ParseException
@@ -315,6 +319,7 @@ public class CalendarFactory
      * @param startingDate a {@link java.time.LocalTime} object.
      * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
+     * @throws java.text.ParseException if any.
      */
     static public LocalDateTime modify(final LocalTime startingDate, final String... adjustmentsArray)
             throws ParseException
@@ -330,6 +335,7 @@ public class CalendarFactory
      * @param startingMilliseconds a long.
      * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
+     * @throws java.text.ParseException if any.
      */
     static public LocalDateTime modify(final long startingMilliseconds, final String... adjustmentsArray)
             throws ParseException
@@ -345,6 +351,7 @@ public class CalendarFactory
      * @param startingDate a {@link java.lang.String} object.
      * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.time.LocalDateTime} object.
+     * @throws java.text.ParseException if any.
      */
     static public LocalDateTime modify(final String startingDate, final String... adjustmentsArray)
             throws ParseException
@@ -399,6 +406,7 @@ public class CalendarFactory
      *
      * @param adjustmentsArray a {@link java.lang.String} object.
      * @return a {@link java.util.Calendar} object.
+     * @throws java.text.ParseException if any.
      */
     static public LocalDateTime now(final String... adjustmentsArray)
             throws ParseException

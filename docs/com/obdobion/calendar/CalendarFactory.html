@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9,"i11":9,"i12":9,"i13":9,"i14":9,"i15":9,"i16":9,"i17":9,"i18":9,"i19":9,"i20":9,"i21":9,"i22":9,"i23":9,"i24":9,"i25":9,"i26":9,"i27":9,"i28":9,"i29":9,"i30":9,"i31":9};
+var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9,"i11":9,"i12":9,"i13":9,"i14":9,"i15":9,"i16":9,"i17":9,"i18":9,"i19":9,"i20":9,"i21":9,"i22":9,"i23":9,"i24":9,"i25":9,"i26":9,"i27":9,"i28":9,"i29":9,"i30":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -345,34 +345,27 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </td>
 </tr>
 <tr id="i27" class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html?is-external=true" title="class or interface in java.time">LocalDateTime</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/obdobion/calendar/CalendarFactory.html#nowX-java.lang.String...-">nowX</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)</code>
-<div class="block">
- nowX.</div>
-</td>
-</tr>
-<tr id="i28" class="altColor">
 <td class="colFirst"><code>static <a href="../../../com/obdobion/calendar/ICalendarFactory.html" title="interface in com.obdobion.calendar">ICalendarFactory</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/obdobion/calendar/CalendarFactory.html#reset-com.obdobion.calendar.ICalendarFactory-">reset</a></span>(<a href="../../../com/obdobion/calendar/ICalendarFactory.html" title="interface in com.obdobion.calendar">ICalendarFactory</a>&nbsp;newFactory)</code>
 <div class="block">
  reset.</div>
 </td>
 </tr>
-<tr id="i29" class="rowColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/obdobion/calendar/CalendarFactory.html#setBusinessDate-java.time.LocalDateTime-">setBusinessDate</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html?is-external=true" title="class or interface in java.time">LocalDateTime</a>&nbsp;businessDate)</code>
 <div class="block">
  setBusinessDate.</div>
 </td>
 </tr>
-<tr id="i30" class="altColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/obdobion/calendar/CalendarFactory.html#setInDebug-boolean-">setInDebug</a></span>(boolean&nbsp;inDebug_parm)</code>
 <div class="block">
  Setter for the field <code>inDebug</code>.</div>
 </td>
 </tr>
-<tr id="i31" class="rowColor">
+<tr id="i30" class="altColor">
 <td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html?is-external=true" title="class or interface in java.time">LocalDateTime</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/obdobion/calendar/CalendarFactory.html#today-java.lang.String...-">today</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)</code>
 <div class="block">The adjustments are separated by a space.</div>
@@ -722,7 +715,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>modify</h4>
 <pre>public static&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html?is-external=true" title="class or interface in java.time">LocalDateTime</a>&nbsp;modify(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Calendar.html?is-external=true" title="class or interface in java.util">Calendar</a>&nbsp;startingDate,
-                                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)</pre>
+                                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)
+                            throws <a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></pre>
 <div class="block">The adjustments are separated by a space. Multiple elements are
  acceptable and are assumed to be more adjusts. This just provides
  flexibility in how this method can be called.</div>
@@ -732,6 +726,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dd><code>adjustmentsArray</code> - a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a> object.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Calendar.html?is-external=true" title="class or interface in java.util"><code>Calendar</code></a> object.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -742,7 +738,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>modify</h4>
 <pre>public static&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html?is-external=true" title="class or interface in java.time">LocalDateTime</a>&nbsp;modify(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Date.html?is-external=true" title="class or interface in java.util">Date</a>&nbsp;startingDate,
-                                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)</pre>
+                                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)
+                            throws <a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></pre>
 <div class="block">The adjustments are separated by a space. Multiple elements are
  acceptable and are assumed to be more adjusts. This just provides
  flexibility in how this method can be called.</div>
@@ -752,6 +749,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dd><code>adjustmentsArray</code> - a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a> object.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Calendar.html?is-external=true" title="class or interface in java.util"><code>Calendar</code></a> object.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -762,7 +761,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>modify</h4>
 <pre>public static&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html?is-external=true" title="class or interface in java.time">LocalDateTime</a>&nbsp;modify(<a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html?is-external=true" title="class or interface in java.time">LocalDate</a>&nbsp;startingDate,
-                                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)</pre>
+                                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)
+                            throws <a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></pre>
 <div class="block">The adjustments are separated by a space. Multiple elements are
  acceptable and are assumed to be more adjusts. This just provides
  flexibility in how this method can be called.</div>
@@ -772,6 +772,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dd><code>adjustmentsArray</code> - a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a> object.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Calendar.html?is-external=true" title="class or interface in java.util"><code>Calendar</code></a> object.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -782,7 +784,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>modify</h4>
 <pre>public static&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html?is-external=true" title="class or interface in java.time">LocalDateTime</a>&nbsp;modify(<a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html?is-external=true" title="class or interface in java.time">LocalDateTime</a>&nbsp;startingDate,
-                                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)</pre>
+                                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)
+                            throws <a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></pre>
 <div class="block"><p>
  modify.
  </p></div>
@@ -792,6 +795,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dd><code>adjustmentsArray</code> - a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a> object.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html?is-external=true" title="class or interface in java.time"><code>LocalDateTime</code></a> object.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -802,7 +807,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>modify</h4>
 <pre>public static&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html?is-external=true" title="class or interface in java.time">LocalDateTime</a>&nbsp;modify(<a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalTime.html?is-external=true" title="class or interface in java.time">LocalTime</a>&nbsp;startingDate,
-                                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)</pre>
+                                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)
+                            throws <a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></pre>
 <div class="block">The adjustments are separated by a space. Multiple elements are
  acceptable and are assumed to be more adjusts. This just provides
  flexibility in how this method can be called.</div>
@@ -812,6 +818,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dd><code>adjustmentsArray</code> - a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a> object.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Calendar.html?is-external=true" title="class or interface in java.util"><code>Calendar</code></a> object.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -822,7 +830,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>modify</h4>
 <pre>public static&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html?is-external=true" title="class or interface in java.time">LocalDateTime</a>&nbsp;modify(long&nbsp;startingMilliseconds,
-                                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)</pre>
+                                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)
+                            throws <a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></pre>
 <div class="block"><p>
  modify.
  </p></div>
@@ -832,6 +841,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dd><code>adjustmentsArray</code> - a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a> object.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Calendar.html?is-external=true" title="class or interface in java.util"><code>Calendar</code></a> object.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -842,7 +853,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>modify</h4>
 <pre>public static&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html?is-external=true" title="class or interface in java.time">LocalDateTime</a>&nbsp;modify(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;startingDate,
-                                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)</pre>
+                                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)
+                            throws <a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></pre>
 <div class="block"><p>
  modify.
  </p></div>
@@ -852,6 +864,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dd><code>adjustmentsArray</code> - a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a> object.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html?is-external=true" title="class or interface in java.time"><code>LocalDateTime</code></a> object.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -915,7 +929,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>now</h4>
-<pre>public static&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html?is-external=true" title="class or interface in java.time">LocalDateTime</a>&nbsp;now(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)</pre>
+<pre>public static&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html?is-external=true" title="class or interface in java.time">LocalDateTime</a>&nbsp;now(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)
+                         throws <a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></pre>
 <div class="block">The adjustments are separated by a space. Multiple elements are
  acceptable and are assumed to be more adjusts. This just provides
  flexibility in how this method can be called. The computation starts at
@@ -925,27 +940,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dd><code>adjustmentsArray</code> - a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a> object.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Calendar.html?is-external=true" title="class or interface in java.util"><code>Calendar</code></a> object.</dd>
-</dl>
-</li>
-</ul>
-<a name="nowX-java.lang.String...-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>nowX</h4>
-<pre>public static&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html?is-external=true" title="class or interface in java.time">LocalDateTime</a>&nbsp;nowX(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;adjustmentsArray)
-                          throws <a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></pre>
-<div class="block"><p>
- nowX.
- </p></div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>adjustmentsArray</code> - a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a> object.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>a <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Calendar.html?is-external=true" title="class or interface in java.util"><code>Calendar</code></a> object.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></code> - if any.</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/text/ParseException.html?is-external=true" title="class or interface in java.text">ParseException</a></code></dd>
 </dl>
 </li>
 </ul>

@@ -53,12 +53,12 @@ public class CalendarFactoryHelper
                     throws Exception
     {
         CalendarFactory.setBusinessDate(null);
-        CalendarFactory.setBusinessDate(CalendarFactory.nowX(startingDateCommand));
-        final LocalDateTime expectedLDT = CalendarFactory.nowX(expectedDateCommand);
+        CalendarFactory.setBusinessDate(CalendarFactory.now(startingDateCommand));
+        final LocalDateTime expectedLDT = CalendarFactory.now(expectedDateCommand);
 
         CalendarFactory.setBusinessDate(null);
-        CalendarFactory.setBusinessDate(CalendarFactory.nowX(startingDateCommand));
-        final LocalDateTime computedLDT = CalendarFactory.nowX(computedDateCommand);
+        CalendarFactory.setBusinessDate(CalendarFactory.now(startingDateCommand));
+        final LocalDateTime computedLDT = CalendarFactory.now(computedDateCommand);
 
         Assert.assertEquals("YEAR (" + expectedLDT.toString() + ") != (" + computedLDT.toString() + ")",
                 expectedLDT.getYear(), computedLDT.getYear());

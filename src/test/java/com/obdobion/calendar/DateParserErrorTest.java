@@ -1,5 +1,7 @@
 package com.obdobion.calendar;
 
+import java.text.ParseException;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -27,9 +29,9 @@ public class DateParserErrorTest
     {
         try
         {
-            CalendarFactory.nowX("2010year");
+            CalendarFactory.now("2010year");
             Assert.fail("should have been exception");
-        } catch (final Exception e)
+        } catch (final ParseException e)
         {
             Assert.assertEquals("invalid direction: 2010year", e.getMessage());
         }
@@ -49,9 +51,9 @@ public class DateParserErrorTest
     {
         try
         {
-            CalendarFactory.nowX("+1xx");
+            CalendarFactory.now("+1xx");
             Assert.fail("should have been exception");
-        } catch (final Exception e)
+        } catch (final ParseException e)
         {
             Assert.assertEquals("invalid uom: xx", e.getMessage());
         }
@@ -71,9 +73,9 @@ public class DateParserErrorTest
     {
         try
         {
-            CalendarFactory.nowX("+xx");
+            CalendarFactory.now("+xx");
             Assert.fail("should have been exception");
-        } catch (final Exception e)
+        } catch (final ParseException e)
         {
             Assert.assertEquals("missing qty in +xx", e.getMessage());
         }
@@ -93,9 +95,9 @@ public class DateParserErrorTest
     {
         try
         {
-            CalendarFactory.nowX("+ d");
+            CalendarFactory.now("+ d");
             Assert.fail("should have been exception");
-        } catch (final Exception e)
+        } catch (final ParseException e)
         {
             Assert.assertEquals("Premature end of formula, qty expected: +", e.getMessage());
         }
@@ -115,9 +117,9 @@ public class DateParserErrorTest
     {
         try
         {
-            CalendarFactory.nowX("=2010");
+            CalendarFactory.now("=2010");
             Assert.fail("should have been exception");
-        } catch (final Exception e)
+        } catch (final ParseException e)
         {
             Assert.assertEquals("uom is required", e.getMessage());
         }

@@ -228,24 +228,28 @@ public abstract class TemporalHelperAbstractImpl implements ITemporalHelperImpl
             createFormatWithTimeOnly(tFormat);
     }
 
+    /** {@inheritDoc} */
     @Override
     public DateTimeFormatter getOutputDF()
     {
         return outputDF;
     }
 
+    /** {@inheritDoc} */
     @Override
     public DateTimeFormatter getOutputDTF()
     {
         return outputDTF;
     }
 
+    /** {@inheritDoc} */
     @Override
     public SimpleDateFormat getOutputSDF()
     {
         return outputSDF;
     }
 
+    /** {@inheritDoc} */
     @Override
     public DateTimeFormatter getOutputTF()
     {
@@ -277,13 +281,11 @@ public abstract class TemporalHelperAbstractImpl implements ITemporalHelperImpl
     }
 
     /**
+     * {@inheritDoc}
+     *
      * <p>
      * parseWithPredefinedParsers.
      * </p>
-     *
-     * @param valueStr a {@link java.lang.String} object.
-     * @return a {@link java.util.Date} object.
-     * @throws java.text.ParseException if any.
      */
     @Override
     public LocalDateTime parseWithPredefinedParsers(final String valueStr) throws ParseException
