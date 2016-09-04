@@ -650,14 +650,22 @@ class DateAdjustment
         }
     }
 
-    LocalDateTime adjustNanos(final LocalDateTime ldt, final int qty)
+    LocalDateTime adjustNanos(final LocalDateTime ldt, final int qty) throws ParseException
     {
-        if (direction == AdjustmentDirection.AT)
-            return ldt.withNano(qty);
-        return ldt.plusNanos(qty);
+        switch (direction)
+        {
+            case AT:
+                return ldt.withNano(qty);
+            case ADD:
+                return ldt.plusNanos(qty);
+            case SUBTRACT:
+                return ldt.minusNanos(qty);
+            default:
+                throw new ParseException("invalid direction in data adjustment: " + direction, 0);
+        }
     }
 
-    LocalDateTime adjustSecond(final LocalDateTime ldt, final int qty)
+    LocalDateTime adjustSecond(final LocalDateTime ldt, final int qty) throws ParseException
     {
         switch (quantityType)
         {
@@ -667,9 +675,20 @@ class DateAdjustment
                 return LocalDateTime.of(ldt.getYear(), ldt.getMonth(), ldt.getDayOfMonth(),
                         ldt.getDayOfMonth(), ldt.getSecond(), MAXNANO);
             default:
-                if (direction == AdjustmentDirection.AT)
-                    return ldt.withSecond(qty);
-                return ldt.plusSeconds(qty);
+            {
+                switch (direction)
+                {
+                    case AT:
+                        return ldt.withSecond(qty);
+                    case ADD:
+                        return ldt.plusSeconds(qty);
+                    case SUBTRACT:
+                        return ldt.minusSeconds(qty);
+
+                    default:
+                        throw new ParseException("invalid direction in data adjustment: " + direction, 0);
+                }
+            }
         }
     }
 

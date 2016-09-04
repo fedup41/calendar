@@ -48,7 +48,7 @@ public abstract class TemporalHelperAbstractImpl implements ITemporalHelperImpl
     static final String     specialAlgoTODAY    = "(?i)today";
 
     static final String     specialAlgoNOW      = "(?i)now";
-    static final int        numberOfOneOffs     = 1;
+    static final int        numberOfOneOffs     = 2;
 
     int                     fmtMakerIndex       = -1;
     Matcher[]               predefinedMat;
@@ -166,6 +166,10 @@ public abstract class TemporalHelperAbstractImpl implements ITemporalHelperImpl
         predefinedMat[++fmtMakerIndex] = createMatcher(
                 yyFmt + "-" + mmFmt + "-" + ddFmt + "T" + hhFmt + ":" + mmFmt + ":" + ssFmt + "." + zzFmt + ".*");
         createFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+
+        predefinedMat[++fmtMakerIndex] = createMatcher(
+                yyFmt + "-" + mmFmt + "-" + ddFmt + "T" + hhFmt + ":" + mmFmt + ":" + ssFmt);
+        createFormat("yyyy-MM-dd'T'HH:mm:ss");
     }
 
     void createWithTimePattern(final String dFormat, final String dMatcher, final char space)
