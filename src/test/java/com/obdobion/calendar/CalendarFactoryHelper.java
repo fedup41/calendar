@@ -72,10 +72,10 @@ public class CalendarFactoryHelper
                 expectedLDT.getMinute(), computedLDT.getMinute());
         Assert.assertEquals("SECOND (" + expectedLDT.toString() + ") != (" + computedLDT.toString() + ")",
                 expectedLDT.getSecond(), computedLDT.getSecond());
-        /*-
-        Assert.assertEquals("NANO (" + expectedLDT.toString() + ") != (" + computedLDT.toString() + ")",
-            expectedLDT.getNano(), computedLDT.getNano());
-        */
+
+        if (comparingNanos)
+            Assert.assertEquals("NANO (" + expectedLDT.toString() + ") != (" + computedLDT.toString() + ")",
+                    expectedLDT.getNano(), computedLDT.getNano());
 
     }
 }

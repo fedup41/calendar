@@ -113,23 +113,192 @@ class DateAdjustment
 
     LocalDateTime adjustDay(final LocalDateTime ldt, final int qty) throws ParseException
     {
+        LocalDateTime mldt = ldt;
         switch (quantityType)
         {
             case BEGINNING:
-                return adjustToBeginningOfTime(ldt);
+
+                switch (direction)
+                {
+                    case AT:
+                    {
+                        return LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                0, 0, 0, 0);
+                    }
+                    case NEXTORTHIS:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                0, 0, 0, 0);
+                        if (ldt.getHour() != 0 || ldt.getMinute() != 0 || ldt.getSecond() != 0 || ldt.getNano() != 0)
+                            return mldt.plusDays(1);
+                        return mldt;
+                    }
+                    case NEXT:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                0, 0, 0, 0);
+                        return mldt.plusDays(1);
+                    }
+                    case PREVORTHIS:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                0, 0, 0, 0);
+                        return mldt;
+                    }
+                    case PREV:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                0, 0, 0, 0);
+                        if (ldt.getHour() == 0 && ldt.getMinute() == 0 && ldt.getSecond() == 0 && ldt.getNano() == 0)
+                            return mldt.minusDays(1);
+                        return mldt;
+                    }
+                    default:
+                        throw new ParseException("invalid direction in data adjustment: " + direction, 0);
+                }
             case ENDING:
-                return adjustToEndOfTime(ldt);
+                switch (direction)
+                {
+                    case AT:
+                    {
+                        return LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                MAXHOUR, MAXMINUTE, MAXSECOND, MAXNANO);
+                    }
+                    case NEXTORTHIS:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                MAXHOUR, MAXMINUTE, MAXSECOND, MAXNANO);
+                        if (ldt.getHour() == MAXHOUR
+                                && ldt.getMinute() == MAXMINUTE
+                                && ldt.getSecond() == MAXSECOND
+                                && ldt.getNano() == MAXNANO)
+                            return mldt.plusDays(1);
+                        return mldt;
+                    }
+                    case NEXT:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                MAXHOUR, MAXMINUTE, MAXSECOND, MAXNANO);
+                        return mldt.plusDays(1);
+                    }
+                    case PREVORTHIS:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                MAXHOUR, MAXMINUTE, MAXSECOND, MAXNANO);
+                        if (ldt.getHour() == MAXHOUR
+                                && ldt.getMinute() == MAXMINUTE
+                                && ldt.getSecond() == MAXSECOND
+                                && ldt.getNano() == MAXNANO)
+                            return mldt;
+                        return mldt.minusDays(1);
+                    }
+                    case PREV:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                MAXHOUR, MAXMINUTE, MAXSECOND, MAXNANO);
+                        return mldt.minusDays(1);
+                    }
+                    default:
+                        throw new ParseException("invalid direction in data adjustment: " + direction, 0);
+                }
             default:
                 switch (direction)
                 {
                     case AT:
-                        final LocalDateTime mldt = ldt.withDayOfMonth(qty);
-                        return mldt;
+                        return mldt.withDayOfMonth(qty);
                     case ADD:
-                        return ldt.plusDays(qty);
+                        return mldt.plusDays(qty);
                     case SUBTRACT:
-                        return ldt.minusDays(qty);
+                        return mldt.minusDays(qty);
+                    case NEXTORTHIS:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                0, 0, 0, 0);
 
+                        if (qty < mldt.getDayOfMonth())
+                        {
+                            mldt = mldt.withDayOfMonth(qty);
+                            return mldt.plusMonths(1);
+                        }
+                        return mldt.withDayOfMonth(qty);
+                    }
+                    case NEXT:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                0, 0, 0, 0);
+
+                        if (qty <= mldt.getDayOfMonth())
+                        {
+                            mldt = mldt.withDayOfMonth(qty);
+                            return mldt.plusMonths(1);
+                        }
+                        return mldt.withDayOfMonth(qty);
+                    }
+                    case PREVORTHIS:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                1,
+                                MAXHOUR, MAXMINUTE, MAXSECOND, MAXNANO);
+                        if (qty > ldt.getDayOfMonth())
+                        {
+                            mldt = mldt.minusMonths(1);
+                            mldt = mldt.withDayOfMonth(qty);
+                            return mldt;
+                        }
+                        return mldt.withDayOfMonth(qty);
+                    }
+                    case PREV:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                MAXHOUR, MAXMINUTE, MAXSECOND, MAXNANO);
+                        if (qty >= mldt.getDayOfMonth())
+                        {
+                            mldt = mldt.withDayOfMonth(qty);
+                            return mldt.minusMonths(1);
+                        }
+                        return mldt.withDayOfMonth(qty);
+                    }
                     default:
                         throw new ParseException("invalid direction in data adjustment: " + direction, 0);
                 }
@@ -138,6 +307,7 @@ class DateAdjustment
 
     LocalDateTime adjustDayOfWeek(final LocalDateTime ldt, final int qty) throws ParseException
     {
+        LocalDateTime mldt = ldt;
         switch (quantityType)
         {
             case BEGINNING: // same as @bw or @bo
@@ -147,19 +317,23 @@ class DateAdjustment
                         return ldt.with(DayOfWeek.MONDAY);
                     case NEXTORTHIS:
                     {
-                        LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
                                 0, 0, 0, 0);
                         if (ldt.get(ChronoField.DAY_OF_WEEK) == DayOfWeek.MONDAY.getValue())
-                            return mldt;
+                            if (ldt.getHour() == 0
+                                    && ldt.getMinute() == 0
+                                    && ldt.getSecond() == 0
+                                            & ldt.getNano() == 0)
+                                return mldt;
                         mldt = mldt.plusWeeks(1);
                         return mldt.with(DayOfWeek.MONDAY);
                     }
                     case NEXT:
                     {
-                        LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
@@ -171,20 +345,28 @@ class DateAdjustment
                     }
                     case PREVORTHIS:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
-                                0, 0, 0, 0);
+                                MAXHOUR, MAXMINUTE, MAXSECOND, MAXNANO);
+                        if (ldt.get(ChronoField.DAY_OF_WEEK) == DayOfWeek.MONDAY.getValue())
+                            if (ldt.getHour() == MAXHOUR
+                                    && ldt.getMinute() == MAXMINUTE
+                                    && ldt.getSecond() == MAXSECOND
+                                    && ldt.getNano() == MAXNANO)
+                                return mldt;
+                            else
+                                return mldt.minusWeeks(1);
                         return mldt.with(DayOfWeek.MONDAY);
                     }
                     case PREV:
                     {
-                        LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
-                                0, 0, 0, 0);
+                                MAXHOUR, MAXMINUTE, MAXSECOND, MAXNANO);
                         if (mldt.get(ChronoField.DAY_OF_WEEK) == DayOfWeek.MONDAY.getValue())
                             mldt = mldt.minusWeeks(1);
                         return mldt.with(DayOfWeek.MONDAY);
@@ -196,10 +378,17 @@ class DateAdjustment
                 switch (direction)
                 {
                     case AT:
-                        return ldt.with(DayOfWeek.SUNDAY);
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                MAXHOUR, MAXMINUTE, MAXSECOND, MAXNANO);
+                        return mldt.with(DayOfWeek.SUNDAY);
+                    }
                     case NEXTORTHIS:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
@@ -208,17 +397,23 @@ class DateAdjustment
                     }
                     case NEXT:
                     {
-                        LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
                                 MAXHOUR, MAXMINUTE, MAXSECOND, MAXNANO);
-                        mldt = mldt.plusWeeks(1);
-                        return mldt.with(DayOfWeek.SUNDAY);
+                        mldt = mldt.with(DayOfWeek.SUNDAY);
+                        if (ldt.getDayOfMonth() == mldt.getDayOfMonth()
+                                && ldt.getHour() == MAXHOUR
+                                && ldt.getMinute() == MAXMINUTE
+                                && ldt.getSecond() == MAXSECOND
+                                && ldt.getNano() == MAXNANO)
+                            mldt = mldt.plusWeeks(1);
+                        return mldt;
                     }
                     case PREVORTHIS:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
@@ -227,7 +422,7 @@ class DateAdjustment
                     }
                     case PREV:
                     {
-                        LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
@@ -241,41 +436,82 @@ class DateAdjustment
                 }
             default:
             {
-                LocalDateTime mldt = ldt;
                 switch (direction)
                 {
                     case AT:
-                        break;
+                        return mldt.with(DayOfWeek.of(qty));
+                    case ADD:
+                        return mldt.plusDays(qty);
+                    case SUBTRACT:
+                        return mldt.minusDays(qty);
                     case NEXTORTHIS:
-                        if (mldt.get(ChronoField.DAY_OF_WEEK) == qty)
-                            break;
-                        if (mldt.get(ChronoField.DAY_OF_WEEK) > qty)
-                            mldt = mldt.plusDays(7);
-                        break;
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                0, 0, 0, 0);
+
+                        if (qty < mldt.getDayOfWeek().getValue())
+                        {
+                            mldt = mldt.with(DayOfWeek.of(qty));
+                            return mldt.plusDays(7);
+                        }
+                        return mldt.with(DayOfWeek.of(qty));
+                    }
                     case NEXT:
-                        if (mldt.get(ChronoField.DAY_OF_WEEK) >= qty)
-                            mldt = mldt.plusDays(7);
-                        break;
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                0, 0, 0, 0);
+
+                        if (qty <= mldt.getDayOfWeek().getValue())
+                        {
+                            mldt = mldt.with(DayOfWeek.of(qty));
+                            return mldt.plusDays(7);
+                        }
+                        return mldt.with(DayOfWeek.of(qty));
+                    }
                     case PREVORTHIS:
-                        if (mldt.get(ChronoField.DAY_OF_WEEK) == qty)
-                            break;
-                        if (mldt.get(ChronoField.DAY_OF_WEEK) < qty)
-                            mldt = mldt.minusDays(7);
-                        break;
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                MAXHOUR, MAXMINUTE, MAXSECOND, MAXNANO);
+                        if (qty > mldt.getDayOfWeek().getValue())
+                        {
+                            mldt = mldt.with(DayOfWeek.of(qty));
+                            return mldt.minusDays(7);
+                        }
+                        return mldt.with(DayOfWeek.of(qty));
+                    }
                     case PREV:
-                        if (mldt.get(ChronoField.DAY_OF_WEEK) <= qty)
-                            mldt = mldt.minusDays(7);
-                        break;
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                MAXHOUR, MAXMINUTE, MAXSECOND, MAXNANO);
+                        if (qty >= mldt.getDayOfWeek().getValue())
+                        {
+                            mldt = mldt.with(DayOfWeek.of(qty));
+                            return mldt.minusDays(7);
+                        }
+                        return mldt.with(DayOfWeek.of(qty));
+                    }
                     default:
                         throw new ParseException("invalid direction in data adjustment: " + direction, 0);
                 }
-                return mldt.with(ChronoField.DAY_OF_WEEK, qty);
             }
         }
     }
 
     LocalDateTime adjustHour(final LocalDateTime ldt, final int qty) throws ParseException
     {
+        LocalDateTime mldt = ldt;
         switch (quantityType)
         {
             case BEGINNING:
@@ -292,7 +528,7 @@ class DateAdjustment
                     }
                     case NEXTORTHIS:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
@@ -303,7 +539,7 @@ class DateAdjustment
                     }
                     case NEXT:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
@@ -312,7 +548,7 @@ class DateAdjustment
                     }
                     case PREVORTHIS:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
@@ -321,7 +557,7 @@ class DateAdjustment
                     }
                     case PREV:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
@@ -339,7 +575,7 @@ class DateAdjustment
                 {
                     case AT:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
@@ -348,7 +584,7 @@ class DateAdjustment
                     }
                     case NEXTORTHIS:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
@@ -357,7 +593,7 @@ class DateAdjustment
                     }
                     case NEXT:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
@@ -368,18 +604,21 @@ class DateAdjustment
                     }
                     case PREVORTHIS:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(
+                        if (ldt.getMinute() == MAXMINUTE
+                                && ldt.getSecond() == MAXSECOND
+                                && ldt.getNano() == MAXNANO)
+                            return mldt;
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
-                                ldt.getHour(), MAXMINUTE, MAXSECOND, MAXNANO);
-                        if (ldt.getMinute() != 0 || ldt.getSecond() != 0 || ldt.getNano() != 0)
-                            return mldt;
+                                ldt.getHour(),
+                                MAXMINUTE, MAXSECOND, MAXNANO);
                         return mldt.minusHours(1);
                     }
                     case PREV:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
@@ -401,7 +640,7 @@ class DateAdjustment
                         return ldt.minusHours(qty);
                     case NEXTORTHIS:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
@@ -412,7 +651,7 @@ class DateAdjustment
                     }
                     case NEXT:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
@@ -423,7 +662,7 @@ class DateAdjustment
                     }
                     case PREVORTHIS:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
@@ -434,7 +673,7 @@ class DateAdjustment
                     }
                     case PREV:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(
+                        mldt = LocalDateTime.of(
                                 ldt.getYear(),
                                 ldt.getMonth(),
                                 ldt.getDayOfMonth(),
@@ -449,15 +688,14 @@ class DateAdjustment
         }
     }
 
-    LocalDateTime adjustMillisecond(final LocalDateTime ldt, final int qty)
+    LocalDateTime adjustMillisecond(final LocalDateTime ldt, final int qty) throws ParseException
     {
-        if (direction == AdjustmentDirection.AT)
-            return ldt.withNano(qty * 1000000);
-        return ldt.plusNanos(qty * 1000000);
+        return adjustNanos(ldt, qty * 1000000);
     }
 
     LocalDateTime adjustMinute(final LocalDateTime ldt, final int qty) throws ParseException
     {
+        LocalDateTime mldt = ldt;
         switch (quantityType)
         {
             case BEGINNING:
@@ -465,25 +703,38 @@ class DateAdjustment
                 switch (direction)
                 {
                     case AT:
-                        return LocalDateTime.of(ldt.getYear(), ldt.getMonth(), ldt.getDayOfMonth(), ldt.getHour(),
-                                ldt.getMinute(), 0, 0);
+                        return LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                ldt.getHour(),
+                                ldt.getMinute(),
+                                0, 0);
 
                     case NEXTORTHIS:
                     {
                         if (ldt.getSecond() != 0 || ldt.getNano() != 0)
                         {
-                            final LocalDateTime mldt = LocalDateTime.of(ldt.getYear(), ldt.getMonth(),
+                            mldt = LocalDateTime.of(
+                                    ldt.getYear(),
+                                    ldt.getMonth(),
                                     ldt.getDayOfMonth(),
                                     ldt.getHour(),
-                                    ldt.getMinute(), 0, 0);
+                                    ldt.getMinute(),
+                                    0, 0);
                             return mldt.plusMinutes(1);
                         }
-                        return LocalDateTime.of(ldt.getYear(), ldt.getMonth(), ldt.getDayOfMonth(), ldt.getHour(),
-                                ldt.getMinute(), 0, 0);
+                        return LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                ldt.getHour(),
+                                ldt.getMinute(),
+                                0, 0);
                     }
                     case NEXT:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(ldt.getYear(), ldt.getMonth(), ldt.getDayOfMonth(),
+                        mldt = LocalDateTime.of(ldt.getYear(), ldt.getMonth(), ldt.getDayOfMonth(),
                                 ldt.getHour(),
                                 ldt.getMinute(), 0, 0);
                         return mldt.plusMinutes(1);
@@ -498,7 +749,7 @@ class DateAdjustment
                         if (ldt.getSecond() != 0 || ldt.getNano() != 0)
                             return LocalDateTime.of(ldt.getYear(), ldt.getMonth(), ldt.getDayOfMonth(), ldt.getHour(),
                                     ldt.getMinute(), 0, 0);
-                        final LocalDateTime mldt = LocalDateTime.of(ldt.getYear(), ldt.getMonth(), ldt.getDayOfMonth(),
+                        mldt = LocalDateTime.of(ldt.getYear(), ldt.getMonth(), ldt.getDayOfMonth(),
                                 ldt.getHour(),
                                 ldt.getMinute(), 0, 0);
                         return mldt.minusMinutes(1);
@@ -526,7 +777,7 @@ class DateAdjustment
                         if (ldt.getSecond() != MAXSECOND || ldt.getNano() != MAXNANO)
                             return LocalDateTime.of(ldt.getYear(), ldt.getMonth(), ldt.getDayOfMonth(), ldt.getHour(),
                                     ldt.getMinute(), MAXSECOND, MAXNANO);
-                        final LocalDateTime mldt = LocalDateTime.of(ldt.getYear(), ldt.getMonth(), ldt.getDayOfMonth(),
+                        mldt = LocalDateTime.of(ldt.getYear(), ldt.getMonth(), ldt.getDayOfMonth(),
                                 ldt.getHour(),
                                 ldt.getMinute(), MAXSECOND, MAXNANO);
                         return mldt.plusMinutes(1);
@@ -535,7 +786,7 @@ class DateAdjustment
                     {
                         if (ldt.getSecond() != MAXSECOND || ldt.getNano() != MAXNANO)
                         {
-                            final LocalDateTime mldt = LocalDateTime.of(ldt.getYear(), ldt.getMonth(),
+                            mldt = LocalDateTime.of(ldt.getYear(), ldt.getMonth(),
                                     ldt.getDayOfMonth(),
                                     ldt.getHour(),
                                     ldt.getMinute(), MAXSECOND, MAXNANO);
@@ -546,7 +797,7 @@ class DateAdjustment
                     }
                     case PREV:
                     {
-                        final LocalDateTime mldt = LocalDateTime.of(ldt.getYear(), ldt.getMonth(), ldt.getDayOfMonth(),
+                        mldt = LocalDateTime.of(ldt.getYear(), ldt.getMonth(), ldt.getDayOfMonth(),
                                 ldt.getHour(),
                                 ldt.getMinute(), MAXSECOND, MAXNANO);
                         return mldt.minusMinutes(1);
@@ -566,7 +817,6 @@ class DateAdjustment
                         return ldt.minusMinutes(qty);
                     case NEXTORTHIS:
                     {
-                        LocalDateTime mldt = ldt;
                         if (ldt.getMinute() > qty)
                             mldt = ldt.plusHours(1);
                         return LocalDateTime.of(mldt.getYear(), mldt.getMonth(), mldt.getDayOfMonth(), mldt.getHour(),
@@ -574,7 +824,6 @@ class DateAdjustment
                     }
                     case NEXT:
                     {
-                        LocalDateTime mldt = ldt;
                         if (ldt.getMinute() >= qty)
                             mldt = ldt.plusHours(1);
                         return LocalDateTime.of(mldt.getYear(), mldt.getMonth(), mldt.getDayOfMonth(), mldt.getHour(),
@@ -582,7 +831,6 @@ class DateAdjustment
                     }
                     case PREVORTHIS:
                     {
-                        LocalDateTime mldt = ldt;
                         if (ldt.getMinute() < qty)
                             mldt = ldt.minusHours(1);
                         return LocalDateTime.of(mldt.getYear(), mldt.getMonth(), mldt.getDayOfMonth(), mldt.getHour(),
@@ -590,7 +838,6 @@ class DateAdjustment
                     }
                     case PREV:
                     {
-                        LocalDateTime mldt = ldt;
                         if (ldt.getMinute() <= qty)
                             mldt = ldt.minusHours(1);
                         return LocalDateTime.of(mldt.getYear(), mldt.getMonth(), mldt.getDayOfMonth(), mldt.getHour(),
@@ -604,25 +851,160 @@ class DateAdjustment
 
     LocalDateTime adjustMonth(final LocalDateTime ldt, final int qty) throws ParseException
     {
+        LocalDateTime mldt = ldt;
         switch (quantityType)
         {
             case BEGINNING:
-                return LocalDateTime.of(
-                        ldt.getYear(),
-                        ldt.getMonth(),
-                        1, 0, 0, 0, 0);
+                switch (direction)
+                {
+                    case AT:
+                    {
+                        return LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                1, 0, 0, 0, 0);
+                    }
+                    case NEXTORTHIS:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                1,
+                                0, 0, 0, 0);
+                        if (ldt.getDayOfMonth() != 1
+                                || ldt.getHour() != 0
+                                || ldt.getMinute() != 0
+                                || ldt.getSecond() != 0
+                                || ldt.getNano() != 0)
+                            return mldt.plusMonths(1);
+                        return mldt;
+                    }
+                    case NEXT:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                1,
+                                0, 0, 0, 0);
+                        return mldt.plusMonths(1);
+                    }
+                    case PREVORTHIS:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                1,
+                                0, 0, 0, 0);
+                        return mldt;
+                    }
+                    case PREV:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                1,
+                                0, 0, 0, 0);
+                        if (ldt.getDayOfMonth() == 1
+                                && ldt.getHour() == 0
+                                && ldt.getMinute() == 0
+                                && ldt.getSecond() == 0
+                                && ldt.getNano() == 0)
+                            return mldt.minusMonths(1);
+                        return mldt;
+                    }
+                    default:
+                        throw new ParseException("invalid direction in data adjustment: " + direction, 0);
+                }
             case ENDING:
             {
-                LocalDateTime mldt = LocalDateTime.of(
-                        ldt.getYear(),
-                        ldt.getMonth(),
-                        1, 0, 0, 0, 0);
-                mldt = mldt.plusMonths(1);
-                return mldt.minusDays(1);
+                switch (direction)
+                {
+                    case AT:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                1,
+                                MAXHOUR,
+                                MAXMINUTE,
+                                MAXSECOND,
+                                MAXNANO);
+                        mldt = mldt.plusMonths(1);
+                        return mldt.minusDays(1);
+                    }
+                    case NEXTORTHIS:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonthValue(),
+                                1,
+                                MAXHOUR,
+                                MAXMINUTE,
+                                MAXSECOND,
+                                MAXNANO);
+                        mldt = mldt.plusMonths(1);
+                        return mldt.minusDays(1);
+                    }
+                    case NEXT:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonthValue(),
+                                1,
+                                MAXHOUR,
+                                MAXMINUTE,
+                                MAXSECOND,
+                                MAXNANO);
+                        mldt = mldt.plusMonths(1);
+                        mldt = mldt.minusDays(1);
+
+                        if (ldt.getDayOfMonth() == mldt.getDayOfMonth()
+                                && ldt.getHour() == MAXHOUR
+                                && ldt.getSecond() == MAXSECOND
+                                && ldt.getNano() == MAXNANO)
+                            return mldt.plusMonths(1);
+                        return mldt;
+                    }
+                    case PREVORTHIS:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonthValue(),
+                                1,
+                                MAXHOUR,
+                                MAXMINUTE,
+                                MAXSECOND,
+                                MAXNANO);
+                        mldt = mldt.plusMonths(1);
+                        mldt = mldt.minusDays(1);
+
+                        if (ldt.getDayOfMonth() == mldt.getDayOfMonth()
+                                && ldt.getHour() == MAXHOUR
+                                && ldt.getMinute() == MAXMINUTE
+                                && ldt.getSecond() == MAXSECOND
+                                && ldt.getNano() == MAXNANO)
+                            return ldt;
+                        mldt = mldt.withDayOfMonth(1);
+                        mldt = mldt.minusDays(1);
+                    }
+                    case PREV:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonthValue(),
+                                1,
+                                MAXHOUR,
+                                MAXMINUTE,
+                                MAXSECOND,
+                                MAXNANO);
+                        return mldt.minusDays(1);
+                    }
+                    default:
+                        throw new ParseException("invalid direction in data adjustment: " + direction, 0);
+                }
             }
             default:
             {
-                LocalDateTime mldt = ldt;
                 switch (direction)
                 {
                     case AT:
@@ -642,7 +1024,72 @@ class DateAdjustment
                         return ldt.plusMonths(qty);
                     case SUBTRACT:
                         return ldt.minusMonths(qty);
+                    case NEXTORTHIS:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                1,
+                                0, 0, 0, 0);
 
+                        if (qty < mldt.getMonthValue())
+                        {
+                            mldt = mldt.withMonth(qty);
+                            return mldt.plusYears(1);
+                        }
+                        return mldt.withMonth(qty);
+                    }
+                    case NEXT:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                1, 0, 0, 0, 0);
+
+                        if (qty <= mldt.getMonthValue())
+                        {
+                            mldt = mldt.withMonth(qty);
+                            return mldt.plusYears(1);
+                        }
+                        return mldt.withDayOfMonth(qty);
+                    }
+                    case PREVORTHIS:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                1,
+                                MAXHOUR, MAXMINUTE, MAXSECOND, MAXNANO);
+                        if (qty > mldt.getMonthValue())
+                        {
+                            mldt = mldt.withMonth(qty);
+                            mldt = mldt.minusYears(1);
+                            mldt = mldt.plusMonths(1);
+                            mldt = mldt.minusDays(1);
+                            return mldt;
+                        }
+                        mldt = mldt.withMonth(qty);
+                        mldt = mldt.plusMonths(1);
+                        mldt = mldt.minusDays(1);
+                        return mldt;
+                    }
+                    case PREV:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                1, MAXHOUR, MAXMINUTE, MAXSECOND, MAXNANO);
+                        if (qty >= mldt.getMonthValue())
+                        {
+                            mldt = mldt.withMonth(qty);
+                            mldt = mldt.minusYears(1);
+                            mldt = mldt.plusMonths(1);
+                            return mldt.minusDays(1);
+                        }
+                        mldt = mldt.withMonth(qty);
+                        mldt = mldt.plusMonths(1);
+                        return mldt.minusDays(1);
+                    }
                     default:
                         throw new ParseException("invalid direction in data adjustment: " + direction, 0);
                 }
@@ -652,39 +1099,275 @@ class DateAdjustment
 
     LocalDateTime adjustNanos(final LocalDateTime ldt, final int qty) throws ParseException
     {
-        switch (direction)
-        {
-            case AT:
-                return ldt.withNano(qty);
-            case ADD:
-                return ldt.plusNanos(qty);
-            case SUBTRACT:
-                return ldt.minusNanos(qty);
-            default:
-                throw new ParseException("invalid direction in data adjustment: " + direction, 0);
-        }
-    }
-
-    LocalDateTime adjustSecond(final LocalDateTime ldt, final int qty) throws ParseException
-    {
+        LocalDateTime mldt = ldt;
         switch (quantityType)
         {
             case BEGINNING:
-                return ldt.withNano(0);
+                throw new ParseException("invalid quantity in data adjustment: " + direction, 0);
             case ENDING:
-                return LocalDateTime.of(ldt.getYear(), ldt.getMonth(), ldt.getDayOfMonth(),
-                        ldt.getDayOfMonth(), ldt.getSecond(), MAXNANO);
+                throw new ParseException("invalid quantity in data adjustment: " + direction, 0);
             default:
             {
                 switch (direction)
                 {
                     case AT:
-                        return ldt.withSecond(qty);
+                        return ldt.withNano(qty);
                     case ADD:
-                        return ldt.plusSeconds(qty);
+                        return ldt.plusNanos(qty);
                     case SUBTRACT:
-                        return ldt.minusSeconds(qty);
+                        return ldt.minusNanos(qty);
+                    case NEXTORTHIS:
+                    {
+                        if (qty < ldt.getNano())
+                        {
+                            mldt = ldt.withNano(qty);
+                            return mldt.plusSeconds(1);
+                        }
+                        return mldt.withNano(qty);
+                    }
+                    case NEXT:
+                    {
+                        if (qty <= ldt.getNano())
+                        {
+                            mldt = ldt.withNano(qty);
+                            return mldt.plusSeconds(1);
+                        }
+                        return mldt.withNano(qty);
+                    }
+                    case PREVORTHIS:
+                    {
+                        if (qty > ldt.getNano())
+                        {
+                            mldt = ldt.withNano(qty);
+                            return mldt.minusSeconds(1);
+                        }
+                        return mldt.withNano(qty);
+                    }
+                    case PREV:
+                    {
+                        if (qty >= ldt.getNano())
+                        {
+                            mldt = ldt.withNano(qty);
+                            return mldt.minusSeconds(1);
+                        }
+                        return mldt.withNano(qty);
+                    }
+                    default:
+                        throw new ParseException("invalid direction in data adjustment: " + direction, 0);
+                }
+            }
+        }
+    }
 
+    LocalDateTime adjustSecond(final LocalDateTime ldt, final int qty) throws ParseException
+    {
+        LocalDateTime mldt = ldt;
+        switch (quantityType)
+        {
+            case BEGINNING:
+
+                switch (direction)
+                {
+                    case AT:
+                        return LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                ldt.getHour(),
+                                ldt.getMinute(),
+                                ldt.getSecond(),
+                                0);
+
+                    case NEXTORTHIS:
+                    {
+                        if (ldt.getNano() != 0)
+                        {
+                            mldt = LocalDateTime.of(
+                                    ldt.getYear(),
+                                    ldt.getMonth(),
+                                    ldt.getDayOfMonth(),
+                                    ldt.getHour(),
+                                    ldt.getMinute(),
+                                    ldt.getSecond(), 0);
+                            return mldt.plusSeconds(1);
+                        }
+                        return ldt;
+                    }
+                    case NEXT:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                ldt.getHour(),
+                                ldt.getMinute(),
+                                ldt.getSecond(),
+                                0);
+                        return mldt.plusSeconds(1);
+                    }
+                    case PREVORTHIS:
+                    {
+                        return LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                ldt.getHour(),
+                                ldt.getMinute(),
+                                ldt.getSecond(),
+                                0);
+                    }
+                    case PREV:
+                    {
+                        if (ldt.getNano() != 0)
+                            return LocalDateTime.of(
+                                    ldt.getYear(),
+                                    ldt.getMonth(),
+                                    ldt.getDayOfMonth(),
+                                    ldt.getHour(),
+                                    ldt.getMinute(),
+                                    ldt.getSecond(),
+                                    0);
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                ldt.getHour(),
+                                ldt.getMinute(),
+                                ldt.getSecond(),
+                                0);
+                        return mldt.minusSeconds(1);
+                    }
+                    default:
+                        throw new ParseException("invalid direction in data adjustment: " + direction, 0);
+                }
+            case ENDING:
+                switch (direction)
+                {
+                    case AT:
+                    {
+                        return LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                ldt.getHour(),
+                                ldt.getMinute(),
+                                ldt.getSecond(),
+                                MAXNANO);
+                    }
+                    case NEXTORTHIS:
+                    {
+                        return LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                ldt.getHour(),
+                                ldt.getMinute(),
+                                ldt.getSecond(),
+                                MAXNANO);
+                    }
+                    case NEXT:
+                    {
+                        if (ldt.getNano() == MAXNANO)
+                        {
+                            mldt = LocalDateTime.of(
+                                    ldt.getYear(),
+                                    ldt.getMonth(),
+                                    ldt.getDayOfMonth(),
+                                    ldt.getHour(),
+                                    ldt.getMinute(),
+                                    ldt.getSecond(),
+                                    MAXNANO);
+                            return mldt.plusSeconds(1);
+                        }
+                        return LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                ldt.getHour(),
+                                ldt.getMinute(),
+                                ldt.getSecond(),
+                                MAXNANO);
+                    }
+                    case PREVORTHIS:
+                    {
+                        if (ldt.getNano() == MAXNANO)
+                            return ldt;
+
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                ldt.getHour(),
+                                ldt.getMinute(),
+                                ldt.getSecond(),
+                                MAXNANO);
+                        return mldt.minusSeconds(1);
+                    }
+                    case PREV:
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                ldt.getMonth(),
+                                ldt.getDayOfMonth(),
+                                ldt.getHour(),
+                                ldt.getMinute(),
+                                ldt.getSecond(),
+                                MAXNANO);
+                        return mldt.minusSeconds(1);
+                    }
+                    default:
+                        throw new ParseException("invalid direction in data adjustment: " + direction, 0);
+                }
+            default:
+            {
+                switch (direction)
+                {
+                    case AT:
+                        return mldt.withSecond(qty);
+                    case ADD:
+                        return mldt.plusSeconds(qty);
+                    case SUBTRACT:
+                        return mldt.minusSeconds(qty);
+                    case NEXTORTHIS:
+                    {
+                        mldt = mldt.withNano(0);
+                        if (qty < mldt.getSecond())
+                        {
+                            mldt = mldt.withSecond(qty);
+                            return mldt.plusMinutes(1);
+                        }
+                        return mldt.withSecond(qty);
+                    }
+                    case NEXT:
+                    {
+                        mldt = mldt.withNano(0);
+                        if (qty <= mldt.getSecond())
+                        {
+                            mldt = mldt.withSecond(qty);
+                            return mldt.plusMinutes(1);
+                        }
+                        return mldt.withSecond(qty);
+                    }
+                    case PREVORTHIS:
+                    {
+                        mldt = mldt.withNano(MAXNANO);
+                        if (qty > mldt.getSecond())
+                        {
+                            mldt = mldt.withSecond(qty);
+                            return mldt.minusMinutes(1);
+                        }
+                        return mldt.withSecond(qty);
+                    }
+                    case PREV:
+                    {
+                        mldt = mldt.withNano(MAXNANO);
+                        if (qty >= mldt.getSecond())
+                        {
+                            mldt = mldt.withSecond(qty);
+                            return mldt.minusMinutes(1);
+                        }
+                        return mldt.withSecond(qty);
+                    }
                     default:
                         throw new ParseException("invalid direction in data adjustment: " + direction, 0);
                 }
@@ -739,45 +1422,138 @@ class DateAdjustment
                 switch (direction)
                 {
                     case AT:
-                        break;
+                    {
+                        return LocalDateTime.of(
+                                ldt.getYear(),
+                                1, 1, 0, 0, 0, 0);
+                    }
                     case NEXTORTHIS:
-                        if (ldt.getDayOfYear() != 1)
-                            mldt = ldt.plusYears(1);
-                        break;
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                1, 1, 0, 0, 0, 0);
+                        if (ldt.getMonthValue() != 1
+                                || ldt.getDayOfMonth() != 1
+                                || ldt.getHour() != 0
+                                || ldt.getMinute() != 0
+                                || ldt.getSecond() != 0
+                                || ldt.getNano() != 0)
+                            return mldt.plusYears(1);
+                        return mldt;
+                    }
                     case NEXT:
-                        mldt = ldt.plusYears(1);
-                        break;
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                1, 1, 0, 0, 0, 0);
+                        return mldt.plusYears(1);
+                    }
                     case PREVORTHIS:
-                        break;
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                1, 1, 0, 0, 0, 0);
+                        return mldt;
+                    }
                     case PREV:
-                        mldt = ldt.minusYears(1);
-                        break;
+                    {
+                        mldt = LocalDateTime.of(
+                                ldt.getYear(),
+                                1, 1, 0, 0, 0, 0);
+                        if (ldt.getMonthValue() == 1
+                                && ldt.getDayOfMonth() == 1
+                                && ldt.getHour() == 0
+                                && ldt.getMinute() == 0
+                                && ldt.getSecond() == 0
+                                && ldt.getNano() == 0)
+                            return mldt.minusYears(1);
+                        return mldt;
+                    }
                     default:
                         throw new ParseException("invalid direction in data adjustment: " + direction, 0);
                 }
-                return LocalDateTime.of(mldt.getYear(), Month.JANUARY, 1, 0, 0, 0, 0);
-
-            case ENDING: // same as @ew or @eo
+            case ENDING:
+            {
                 switch (direction)
                 {
                     case AT:
-                        break;
+                    {
+                        return LocalDateTime.of(
+                                ldt.getYear(),
+                                12,
+                                31,
+                                MAXHOUR,
+                                MAXMINUTE,
+                                MAXSECOND,
+                                MAXNANO);
+                    }
                     case NEXTORTHIS:
-                        break;
+                    {
+                        return LocalDateTime.of(
+                                ldt.getYear(),
+                                12,
+                                31,
+                                MAXHOUR,
+                                MAXMINUTE,
+                                MAXSECOND,
+                                MAXNANO);
+                    }
                     case NEXT:
-                        mldt = ldt.plusYears(1);
-                        break;
+                    {
+                        if (ldt.getMonthValue() != 12
+                                || ldt.getDayOfMonth() != 31
+                                || ldt.getHour() != MAXHOUR
+                                || ldt.getSecond() != MAXSECOND
+                                || ldt.getNano() != MAXNANO)
+                            return LocalDateTime.of(
+                                    ldt.getYear(),
+                                    12,
+                                    31,
+                                    MAXHOUR,
+                                    MAXMINUTE,
+                                    MAXSECOND,
+                                    MAXNANO);
+                        return LocalDateTime.of(
+                                ldt.getYear() + 1,
+                                12,
+                                31,
+                                MAXHOUR,
+                                MAXMINUTE,
+                                MAXSECOND,
+                                MAXNANO);
+                    }
                     case PREVORTHIS:
-                        if (!isEndOfThisYear(ldt))
-                            mldt = ldt.minusYears(1);
-                        break;
+                    {
+                        if (ldt.getMonthValue() == 12
+                                && ldt.getDayOfMonth() == 31
+                                && ldt.getHour() == MAXHOUR
+                                && ldt.getSecond() == MAXSECOND
+                                && ldt.getNano() == MAXNANO)
+                            return ldt;
+                        return LocalDateTime.of(
+                                ldt.getYear() - 1,
+                                12,
+                                31,
+                                MAXHOUR,
+                                MAXMINUTE,
+                                MAXSECOND,
+                                MAXNANO);
+                    }
                     case PREV:
-                        mldt = ldt.minusYears(1);
-                        break;
+                    {
+                        return LocalDateTime.of(
+                                ldt.getYear() - 1,
+                                12,
+                                31,
+                                MAXHOUR,
+                                MAXMINUTE,
+                                MAXSECOND,
+                                MAXNANO);
+                    }
                     default:
                         throw new ParseException("invalid direction in data adjustment: " + direction, 0);
                 }
-                return LocalDateTime.of(mldt.getYear(), Month.DECEMBER, 31, MAXHOUR, MAXMINUTE, MAXSECOND, MAXNANO);
+            }
 
             default:
                 switch (direction)
@@ -909,15 +1685,15 @@ class DateAdjustment
                 unitOfMeasure = UnitOfMeasure.DAYOFWEEK;
                 break;
             case 'm':
-                if (uom.startsWith("min"))
+                if (uom.startsWith("mi"))
                     unitOfMeasure = UnitOfMeasure.MINUTE;
-                else if (uom.startsWith("mil") || uom.equals("ms"))
+                else if (uom.equals("ms"))
                     unitOfMeasure = UnitOfMeasure.MILLISECOND;
                 else
                     unitOfMeasure = UnitOfMeasure.MONTH;
                 break;
             case 'd':
-                if (uom.startsWith("dayofw"))
+                if (uom.startsWith("dayofw") || uom.startsWith("dow"))
                     unitOfMeasure = UnitOfMeasure.DAYOFWEEK;
                 else
                     unitOfMeasure = UnitOfMeasure.DAY;

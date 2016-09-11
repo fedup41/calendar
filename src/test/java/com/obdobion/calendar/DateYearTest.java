@@ -130,7 +130,7 @@ public class DateYearTest
     public void nextEndOfYear()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=1d =1M =2011y =btime", "=12m =31d =2012y =etime", ">eyear");
+        CalendarFactoryHelper.startExpectedComputed("=1d =1M =2011y =btime", "=12m =31d =2011y =etime", ">eyear");
     }
 
     /**
@@ -226,7 +226,7 @@ public class DateYearTest
     public void prevBeginningYear()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=2d =1M =2011y =btime", "=1d =2010y", "<byear");
+        CalendarFactoryHelper.startExpectedComputed("=2d =1M =2011y =btime", "=1d =2011y", "<byear");
     }
 
     /**
@@ -296,7 +296,7 @@ public class DateYearTest
     public void prevOrThisEndOfYear_this()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=12M =31d =2011y", "=etime", "<=eyear");
+        CalendarFactoryHelper.startExpectedComputed("=12M =31d =2011y =et", "", "<=eyear");
     }
 
     /**

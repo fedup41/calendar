@@ -121,8 +121,9 @@ public class DateMinuteTest
     public void beginningAt()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=bt =1hours =10min =1sec =2mil",
-                "=bt =1hours =10min =0sec =0mil",
+        CalendarFactoryHelper.startExpectedComputed(
+                "=bt =1hours =10min =1sec =2ms",
+                "=bt =1hours =10min =0sec =0ms",
                 "=bminute");
     }
 
@@ -138,7 +139,8 @@ public class DateMinuteTest
     public void beginningNext()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=bt =1hours =10min =1sec =1mil", "=bt =1hours =11min", ">bmin");
+        CalendarFactoryHelper.startExpectedComputed(
+                "=bt =1hours =10min =1sec =1ms", "=bt =1hours =11min =0s =0n", ">bmin", true);
     }
 
     /**
@@ -168,8 +170,8 @@ public class DateMinuteTest
     public void beginningNextOrThis_notBeginning()
             throws Exception
     {
-        CalendarFactoryHelper
-                .startExpectedComputed("=bt =1hours =10min =15sec =30mill", "=bt =1hours =11min", ">=bmin");
+        CalendarFactoryHelper.startExpectedComputed(
+                "=bt =1hours =10min =15sec =30ms", "=11min =0s =0n", ">=bmin");
     }
 
     /**
@@ -214,7 +216,8 @@ public class DateMinuteTest
     public void beginningPrevOrThis_after()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=bt =1hours =10min =1sec =2mill", "=bt =1hours =10min", "<=bmin");
+        CalendarFactoryHelper.startExpectedComputed(
+                "=bt =1hours =10min =1sec =2ms", "=bt =1hours =10min =0s =0n", "<=bmin", true);
     }
 
     /**

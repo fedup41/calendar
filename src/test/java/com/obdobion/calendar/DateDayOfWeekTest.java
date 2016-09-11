@@ -48,7 +48,8 @@ public class DateDayOfWeekTest
     public void at_EOW()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=1dayofweek =20ms", "+6d =20ms", "=edayofweek");
+        CalendarFactoryHelper.startExpectedComputed(
+                "=1dayofweek =20ms", "+6d =23h =59mi =59s =999999999n", "=edayofweek", true);
     }
 
     /**
@@ -104,7 +105,7 @@ public class DateDayOfWeekTest
     public void next_EOW_NextDayInNextWeek()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=7dayofweek", "+7d =7dayofweek =etime", ">edayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=7dayofweek =etime", "+7d =7dayofweek =etime", ">edayofweek");
     }
 
     /**
@@ -283,7 +284,7 @@ public class DateDayOfWeekTest
     public void prev_BOW_PrevDayInPrevWeek()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=1dayofweek =btime", "-7d", "<bdayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=1dayofweek =btime", "-7d =et", "<bdayofweek");
     }
 
     /**
@@ -297,7 +298,7 @@ public class DateDayOfWeekTest
     public void prev_BOW_PrevDayInSameWeek()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=2dayofweek =btime", "-1d", "<bdayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=2dayofweek =btime", "-1d =et", "<bdayofweek");
     }
 
     /**
@@ -311,7 +312,7 @@ public class DateDayOfWeekTest
     public void prev_DAY_PrevDayInPrevWeek()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=6dayofweek =btime", "-7d", "<6dayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=6dayofweek =btime", "-7d =et", "<6dayofweek");
     }
 
     /**
@@ -325,7 +326,7 @@ public class DateDayOfWeekTest
     public void prev_DAY_PrevDayInSameWeek()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=6dayofweek =btime", "-1d", "<5dayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=6dayofweek =btime", "-1d =et", "<5dayofweek");
     }
 
     /**
@@ -353,7 +354,7 @@ public class DateDayOfWeekTest
     public void prevEq_BOW_PrevDayInSameWeek()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=2dayofweek =btime", "-1d", "<=bdayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=2dayofweek =btime", "-1d =et", "<=bdayofweek");
     }
 
     /**
@@ -367,7 +368,7 @@ public class DateDayOfWeekTest
     public void prevEq_BOW_ThisDayIsOk()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=1dayofweek =btime", "", "<=bdayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=1dayofweek =btime", "-7d =et", "<=bdayofweek");
     }
 
     /**
@@ -381,7 +382,7 @@ public class DateDayOfWeekTest
     public void prevEq_DAY_PrevDayInPrevWeek()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=4dayofweek =btime", "-7d +1d", "<=5dayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=4dayofweek =btime", "-7d +1d =et", "<=5dayofweek");
     }
 
     /**
@@ -395,7 +396,7 @@ public class DateDayOfWeekTest
     public void prevEq_DAY_PrevDayInSameWeek()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=6dayofweek =btime", "-1d", "<=5dayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=6dayofweek =btime", "-1d =et", "<=5dayofweek");
     }
 
     /**
@@ -409,7 +410,7 @@ public class DateDayOfWeekTest
     public void prevEq_DAY_ThisDayIsOk()
             throws Exception
     {
-        CalendarFactoryHelper.startExpectedComputed("=6dayofweek =btime", "", "<=6dayofweek");
+        CalendarFactoryHelper.startExpectedComputed("=6dayofweek =btime", "=et", "<=6dayofweek");
     }
 
     /**
@@ -475,7 +476,7 @@ public class DateDayOfWeekTest
     {
         try
         {
-            CalendarFactoryHelper.startExpectedComputed("=btime", "-7d =1dayofweek", "-1dayofweek");
+            CalendarFactoryHelper.startExpectedComputed("=btime", "-1day", "-1dayofweek");
         } catch (final Exception e)
         {
             Assert.assertEquals("invalid direction in data adjustment: SUBTRACT", e.getMessage());

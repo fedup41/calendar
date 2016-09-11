@@ -21,7 +21,8 @@ import org.junit.runners.Suite.SuiteClasses;
         DateMinuteTest.class,
         DateParserErrorTest.class,
         DateYearTest.class,
-        JSONDateTest.class })
+        JSONDateTest.class,
+        AllPossibleModificationTest.class })
 public class MasterSuite
 {
 
