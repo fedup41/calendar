@@ -88,7 +88,7 @@
 				<configuration>
 					<defaultAuthor>Chris DeGreef fedupforone@gmail.com</defaultAuthor>
 					<fixTags>author,since,param,return,throws,link</fixTags>
-					<outputDirectory>${project.build.directory}/../docs</outputDirectory>
+					<outputDirectory>docs</outputDirectory>
 					<notimestamp>true</notimestamp>
 					<windowtitle>Calendar</windowtitle>
 					<bottom><![CDATA[<a href="https://github.com/fedups/com.obdobion.calendar/wiki">Open-Source on GitHub<a>.<p><a href="http://search.maven.org/#search%7Cga%7C1%7Ccom.obdobion.calendar">Artifacts on Maven Central<a>.]]></bottom>
