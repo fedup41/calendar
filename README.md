@@ -1,6 +1,6 @@
 # com.obdobion.calendar
 
-Seriously, read the [wiki](https://github.com/fedups/com.obdobion.calendar/wiki).
+Read the [wiki](https://github.com/fedups/com.obdobion.calendar/wiki).
 
 Date Calendar Functions
 
