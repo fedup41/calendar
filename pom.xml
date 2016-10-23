@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.obdobion</groupId>
 	<artifactId>calendar</artifactId>
-	<version>2.2.0</version>
+	<version>2.2.2</version>
 	<name>${project.groupId}.${project.artifactId}</name>
 	<description>A better calendar for JAVA</description>
 	<url>https://github.com/fedups/com.obdobion.calendar</url>
@@ -17,19 +17,25 @@
 			<url>http://www.opensource.org/licenses/mit-license.php</url>
 		</license>
 	</licenses>
-    <developers>
-        <developer>
-            <name>Christopher DeGreef</name>
-            <email>fedupforone@gmail.com</email>
-            <organization>Obdobion</organization>
-            <organizationUrl>http://www.github.com/fedups</organizationUrl>
-        </developer>
-    </developers>
+	<developers>
+		<developer>
+			<name>Christopher DeGreef</name>
+			<email>fedupforone@gmail.com</email>
+			<organization>Obdobion</organization>
+			<organizationUrl>http://www.github.com/fedups</organizationUrl>
+		</developer>
+	</developers>
+	
     <scm>
         <connection>scm:git:git@github.com:fedups/com.obdobion.calendar.git</connection>
         <developerConnection>scm:git:git@github.com:fedups/com.obdobion.calendar.git</developerConnection>
         <url>git@github.com:fedups/com.obdobion.calendar.git</url>
     </scm>
+
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/fedups/com.obdobion.calendar/issues</url>
+	</issueManagement>
 
 	<properties>
 		<java.target.version>1.8</java.target.version>
