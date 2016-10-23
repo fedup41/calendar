@@ -25,6 +25,12 @@
 			<organizationUrl>http://www.github.com/fedups</organizationUrl>
 		</developer>
 	</developers>
+	
+    <scm>
+        <connection>scm:git:git@github.com:fedups/com.obdobion.calendar.git</connection>
+        <developerConnection>scm:git:git@github.com:fedups/com.obdobion.calendar.git</developerConnection>
+        <url>git@github.com:fedups/com.obdobion.calendar.git</url>
+    </scm>
 
 	<issueManagement>
 		<system>GitHub</system>
